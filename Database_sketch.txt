@@ -1,0 +1,18 @@
+User(Id, Username, Password, Email,)
+User data(Id,Uid,First_name,Last_name, Gender, Birthday, Lid, PhotoID,)
+School(Id, Name, Type, Lid)
+School_User_Connector(Id,Uid,Sid)
+Workplace(Id,Lid, Name, Type,)
+Workplace User(Id, Uid,Wid)
+Location(Id, Postcode, City, Street, Housenumber,)
+Post(Id, UID, Creation_time, Content, LikeID)
+Likes(Id,UID)
+Comment(Id, UID, PID Creation_time, Content, LikeID)
+Group(Id, Name, Description)
+Group_members(Id, GroupId, Uid) 
+Group_admins(Id, GroupId, Uid)
+Message(Id, Uid1, Uid2, Content, Creation_time,)
+Photos(Id, Uid, Photo)
+Friends(Id, Uid1, Uid2)
+
+
