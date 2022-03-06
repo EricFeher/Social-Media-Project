@@ -1,6 +1,17 @@
-<mat-toolbar color="primary">
-    <span>SocialLobster</span>
+<mat-toolbar color="primary" class="mat-elevation-z6">
+    <!--
+        <div class="img">
+        <img src="..\..\..\assets\lobster.png" />
+    </div>
+    -->
+    <div>
+        <span>SocialLobster</span>
+    </div>
     <div class="spacer"></div>
-    <button mat-button>Login</button>
-    <button mat-raised-button>Register</button>
+    <div>
+        <button mat-button routerLink="/login-component" routerLinkActive="active">Login</button>
+    </div>
+    <div>
+        <button mat-raised-button routerLink="/register-component" routerLinkActive="active">Register</button>
+    </div>
 </mat-toolbar>
