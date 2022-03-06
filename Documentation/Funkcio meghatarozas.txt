@@ -1,0 +1,11 @@
+Funkció meghatározás
+-User regisztráció és bejelentkezés
+-Mások követése
+-Csoportok készítése, kezelése, törlése
+-Post írása, kezelése, törlése
+-Komment írása, kezelése, törlése
+-Postok, kommentek likeolása
+-Üzenetek küldése
+-Emberek, csoportok keresése
+-Feed olvasása
+-Profilok kezelése, megtekintése
