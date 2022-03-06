@@ -24,6 +24,11 @@ import { MatOptionModule } from '@angular/material/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/register/register.component';
+import { Navbar2Component } from './components/navbar2/navbar2.component';
+import { ProfileComponent } from './profile/profile.component';
+import { GroupsComponent } from './groups/groups.component';
+import { FeedComponent } from './feed/feed.component';
+import { ExploreComponent } from './explore/explore.component';
 
 
 @NgModule({
@@ -32,6 +37,11 @@ import { RegisterComponent } from './components/register/register.component';
     NavbarComponent,
     LoginComponent,
     RegisterComponent,
+    Navbar2Component,
+    ProfileComponent,
+    GroupsComponent,
+    FeedComponent,
+    ExploreComponent,
   ],
   imports: [
     BrowserModule,
