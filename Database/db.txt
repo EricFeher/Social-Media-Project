@@ -1,0 +1,226 @@
+CREATE TABLE user(
+	id NUMBER(10) NOT NULL AUTO_INCREMENT,
+	username varchar2(50) NOT NULL,
+	password varchar2(50) NOT NULL,
+	email varchar2(50) NOT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE location(
+	id NUMBER(10) NOT NULL AUTO_INCREMENT,
+	postcode varchar2(10),
+	city varchar2(30),
+	street varchar2(30),
+	housenumber NUMBER,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE userdata(
+	id NUMBER(10) NOT NULL AUTO_INCREMENT,
+	uid NUMBER(10) NOT NULL,
+	lid NUMBER(10) NOT NULL,
+	photoid NUMBER(10),
+	first_name varchar2(30),
+	last_name varchar2(30),
+	gender varchar2(1),
+	birthday DATE,
+	CONSTRAINT loc
+		FOREIGN KEY (lid)
+		REFERENCES location(id)
+		ON DELETE CASCADE,
+	CONSTRAINT usr
+		FOREIGN KEY (uid)
+		REFERENCES user(id)
+		ON DELETE CASCADE,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE school(
+	id NUMBER(10) NOT NULL AUTO_INCREMENT,
+	lid NUMBER(10) NOT NULL,
+	name varchar2(30),
+	school_type varchar2(30),
+	CONSTRAINT loc
+		FOREIGN KEY (lid)
+		REFERENCES location(id)
+		ON DELETE CASCADE,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE school_user_connector(
+	id NUMBER(10) NOT NULL AUTO_INCREMENT,
+	uid NUMBER(10) NOT NULL,
+	sid NUMBER(10) NOT NULL,
+	CONSTRAINT sch
+		FOREIGN KEY (sid)
+		REFERENCES school(id)
+		ON DELETE CASCADE,
+	CONSTRAINT usr
+		FOREIGN KEY (uid)
+		REFERENCES user(id)
+		ON DELETE CASCADE,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE workplace(
+	id NUMBER(10) NOT NULL AUTO_INCREMENT,
+	lid NUMBER(10) NOT NULL,
+	name varchar2(30),
+	workplace_type varchar2(30),
+	CONSTRAINT loc
+		FOREIGN KEY (lid)
+		REFERENCES location(id)
+		ON DELETE CASCADE,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE workplace_user_connector(
+	id NUMBER(10) NOT NULL AUTO_INCREMENT,
+	uid NUMBER(10) NOT NULL,
+	wid NUMBER(10) NOT NULL,
+	CONSTRAINT wrk
+		FOREIGN KEY (wid)
+		REFERENCES workplace(id)
+		ON DELETE CASCADE,
+	CONSTRAINT usr
+		FOREIGN KEY (uid)
+		REFERENCES user(id)
+		ON DELETE CASCADE,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE post(
+	id NUMBER(10) NOT NULL AUTO_INCREMENT,
+	uid NUMBER(10) NOT NULL,
+	creation_time DATETIME NOT NULL,
+	content varchar2(999) NOT NULL,
+	CONSTRAINT usr
+		FOREIGN KEY (uid)
+		REFERENCES user(id)
+		ON DELETE CASCADE,
+	PRIMARY KEY (id)	
+);
+
+CREATE TABLE post_likes(
+	id NUMBER(10) NOT NULL AUTO_INCREMENT,
+	uid NUMBER(10) NOT NULL,
+	pid NUMBER(10) NOT NULL,
+	CONSTRAINT usr
+		FOREIGN KEY (uid)
+		REFERENCES user(id)
+		ON DELETE CASCADE,
+	CONSTRAINT pst
+		FOREIGN KEY (pid)
+		REFERENCES post(id)
+		ON DELETE CASCADE,
+	PRIMARY KEY (id)
+);
+
+
+CREATE TABLE comment(
+	id NUMBER(10) NOT NULL AUTO_INCREMENT,
+	uid NUMBER(10) NOT NULL,
+	creation_time DATETIME NOT NULL,
+	content varchar2(999) NOT NULL,
+	CONSTRAINT usr
+		FOREIGN KEY (uid)
+		REFERENCES user(id)
+		ON DELETE CASCADE,
+	PRIMARY KEY (id)	
+);
+
+CREATE TABLE comment_likes(
+	id NUMBER(10) NOT NULL AUTO_INCREMENT,
+	uid NUMBER(10) NOT NULL,
+	cid NUMBER(10) NOT NULL,
+	CONSTRAINT usr
+		FOREIGN KEY (uid)
+		REFERENCES user(id)
+		ON DELETE CASCADE,
+	CONSTRAINT cmt
+		FOREIGN KEY (cid)
+		REFERENCES comment(id)
+		ON DELETE CASCADE,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE group(
+	id NUMBER(10) NOT NULL AUTO_INCREMENT,
+	name varchar2(50) NOT NULL,
+	description varchar2(999),
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE group_members(
+	id NUMBER(10) NOT NULL AUTO_INCREMENT,
+	uid NUMBER(10) NOT NULL,
+	gid NUMBER(10) NOT NULL,
+	CONSTRAINT usr
+		FOREIGN KEY (uid)
+		REFERENCES user(id)
+		ON DELETE CASCADE,
+	CONSTRAINT grp
+		FOREIGN KEY (gid)
+		REFERENCES group(id)
+		ON DELETE CASCADE,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE group_admins(
+	id NUMBER(10) NOT NULL AUTO_INCREMENT,
+	uid NUMBER(10) NOT NULL,
+	gid NUMBER(10) NOT NULL,
+	CONSTRAINT usr
+		FOREIGN KEY (uid)
+		REFERENCES user(id)
+		ON DELETE CASCADE,
+	CONSTRAINT grp
+		FOREIGN KEY (gid)
+		REFERENCES group(id)
+		ON DELETE CASCADE,
+	PRIMARY KEY (id)
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE message(
+	id NUMBER(10) NOT NULL AUTO_INCREMENT,
+	uid1 NUMBER(10) NOT NULL,
+	uid2 NUMBER(10) NOT NULL,
+	content varchar2(999) NOT NULL,
+	creation_time DATETIME NOT NULL,
+	CONSTRAINT usr1
+		FOREIGN KEY (uid1)
+		REFERENCES user(id)
+		ON DELETE CASCADE,
+	CONSTRAINT usr2
+		FOREIGN KEY (uid2)
+		REFERENCES user(id)
+		ON DELETE CASCADE,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE photos(
+	id NUMBER(10) NOT NULL AUTO_INCREMENT,
+	uid NUMBER(10) NOT NULL,
+	photo VARCHAR2(50) NOT NULL,
+	CONSTRAINT usr
+		FOREIGN KEY (uid)
+		REFERENCES user(id)
+		ON DELETE CASCADE,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE message(
+	id NUMBER(10) NOT NULL AUTO_INCREMENT,
+	uid1 NUMBER(10) NOT NULL,
+	uid2 NUMBER(10) NOT NULL,
+	CONSTRAINT usr1
+		FOREIGN KEY (uid1)
+		REFERENCES user(id)
+		ON DELETE CASCADE,
+	CONSTRAINT usr2
+		FOREIGN KEY (uid2)
+		REFERENCES user(id)
+		ON DELETE CASCADE,
+	PRIMARY KEY (id)
+);
