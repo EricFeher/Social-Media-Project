@@ -1,18 +1,19 @@
 <mat-card>
     <mat-card-content>
-        <form>
+        <form #Registerform="ngForm" (ngSubmit)="registerUser()">
             <h2>Register</h2>
+            <p>{{msg}}</p>
             <mat-form-field>
-                <input matInput placeholder="Email" name="username" required>
+                <input matInput placeholder="Email" name="email" required [(ngModel)]="user.email">
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder="Username" name="username" required>
+                <input matInput placeholder="Username" name="username" required [(ngModel)]="user.username">
             </mat-form-field>
             <mat-form-field>
-                <input matInput type="password" placeholder="Password" name="password" required>
+                <input matInput type="password" placeholder="Password" name="password" required [(ngModel)]="user.password">
             </mat-form-field>
             <mat-form-field>
-                <input matInput type="password" placeholder="Password again" name="password" required>
+                <input matInput type="password" placeholder="Password again" name="password" required [(ngModel)]="user.password">
             </mat-form-field>
             <button mat-raised-button color="primary">Register</button>
         </form>
