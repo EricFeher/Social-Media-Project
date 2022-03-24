@@ -1,11 +1,10 @@
-package Controller;
+package com.example.sociallobster.Controller;
 
-import Model.User;
-import Repository.UserRepository;
+import com.example.sociallobster.Model.User;
+import com.example.sociallobster.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -14,7 +13,6 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/api/user", produces = MediaType.APPLICATION_JSON_VALUE)
 public class UserController {
-
     @Autowired
     UserRepository userRepository;
     @PostMapping("/")

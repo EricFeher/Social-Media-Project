@@ -28,7 +28,6 @@
         <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
 
-
     <dependency>
         <groupId>com.oracle.database.jdbc</groupId>
         <artifactId>ojdbc8</artifactId>
@@ -58,6 +57,11 @@
     <dependency>
         <groupId>org.projectlombok</groupId>
         <artifactId>lombok</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <scope>test</scope>
     </dependency>
 </dependencies>
 
