@@ -10,6 +10,7 @@ import { User } from 'src/app/user';
 })
 export class LoginComponent implements OnInit {
   user = new User();
+  msg = '';
 
   constructor( private _service : RegistrationService, private _router : Router) { }
 
@@ -22,9 +23,15 @@ export class LoginComponent implements OnInit {
         console.log("response received");
         this._router.navigate(['/feed']);
       },
-      error => console.log("exception occured")
-      
+      error => {
+        console.log("exception occured");
+      this.msg = "Nem megfelelő felhasználónév vagy jelszó!";
+      }
     );
+  }
+
+  gotoregistration(){
+    this._router.navigate(['/register']);
   }
 
 }

@@ -11,7 +11,7 @@ public class RegisterController {
     private RegisterService service;
 
     @PostMapping("/registeruser")
-    @CrossOrigin(origins = "http://localhost:4200")
+    //@CrossOrigin(origins = "http://localhost:4200")
     public User registerUser(@RequestBody User user) throws Exception {
         String tempEmail = user.getEmail();
         if (tempEmail != null && !"".equals(tempEmail)){
@@ -25,7 +25,7 @@ public class RegisterController {
         return userObj;
     }
     @PostMapping("/login")
-    @CrossOrigin(origins = "http://localhost:4200")
+    //@CrossOrigin(origins = "http://localhost:4200")
     public User loginUser(@RequestBody User user) throws Exception {
         String tempEmail = user.getEmail();
         String tempPass = user.getPassword();

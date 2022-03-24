@@ -2,14 +2,16 @@
     <mat-card-content>
         <form #loginform="ngForm" (ngSubmit)="loginUser()">
             <h2>Log In</h2>
+            <p>{{msg}}</p>
             <mat-form-field>
-                <input matInput placeholder="Email" name="username" required [(ngModel)]="user.email">
+                <input matInput placeholder="Email" name="username" [(ngModel)]="user.email" required pattern="^w+@[a-zA-z_]+?\.[a-zA-Z]{2,3}$" #email="ngModel">
             </mat-form-field>
             <mat-form-field>
                 <input matInput type="password" placeholder="Password" name="password" required [(ngModel)]="user.password">
             </mat-form-field>
             <button mat-raised-button color="primary">Login</button>
         </form>
+        <small (click)="gotoregistration">Még nincs felhasználód? Regiszrálj!</small>
     </mat-card-content>
 </mat-card>
 
