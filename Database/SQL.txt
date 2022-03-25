@@ -1,0 +1,497 @@
+CREATE SEQUENCE enduser_seq START WITH 1;
+
+CREATE TABLE enduser (
+	id NUMBER(10) NOT NULL,
+	username varchar2(50) NOT NULL,
+	password varchar2(50) NOT NULL,
+	email varchar2(50) NOT NULL,
+	CONSTRAINT user_pk PRIMARY KEY (id)
+);
+  
+CREATE OR REPLACE TRIGGER user_autoincrement
+BEFORE INSERT ON enduser
+FOR EACH ROW
+
+BEGIN
+  SELECT enduser_seq.NEXTVAL
+  INTO   :new.id
+  FROM   dual;
+END;
+
+
+---------------------------------------------------
+
+CREATE SEQUENCE location_seq START WITH 1;
+
+CREATE TABLE location (
+	id NUMBER(10) NOT NULL,
+	postcode varchar2(10),
+	city varchar2(30),
+	street varchar2(30),
+	housenumber NUMBER,
+	CONSTRAINT location_pk PRIMARY KEY (id)
+);
+
+CREATE OR REPLACE TRIGGER location_autoincrement
+BEFORE INSERT ON location
+FOR EACH ROW
+
+BEGIN
+  SELECT location_seq.NEXTVAL
+  INTO   :new.id
+  FROM   dual;
+END;
+
+
+------------------------------------------------------
+
+CREATE SEQUENCE userdata_seq START WITH 1;
+
+CREATE TABLE userdata (
+	id NUMBER(10) NOT NULL,
+	user_id NUMBER(10) NOT NULL,
+	location_id NUMBER(10) NOT NULL,
+	photoid NUMBER(10),
+	first_name varchar2(30),
+	last_name varchar2(30),
+	gender varchar2(1),
+	birthday DATE,
+	CONSTRAINT user_location
+		FOREIGN KEY (location_id)
+		REFERENCES location(id)
+		ON DELETE CASCADE,
+	CONSTRAINT usr
+		FOREIGN KEY (user_id)
+		REFERENCES enduser(id)
+		ON DELETE CASCADE,
+	CONSTRAINT userdata_pk PRIMARY KEY (id)
+);
+
+CREATE OR REPLACE TRIGGER userdata_autoincrement
+BEFORE INSERT ON userdata
+FOR EACH ROW
+
+BEGIN
+  SELECT userdata_seq.NEXTVAL
+  INTO   :new.id
+  FROM   dual;
+END;
+
+
+-----------------------------------------------------
+
+CREATE SEQUENCE school_seq START WITH 1;
+
+CREATE TABLE school(
+	id NUMBER(10) NOT NULL,
+	location_id NUMBER(10) NOT NULL,
+	name varchar2(30),
+	school_type varchar2(30),
+	CONSTRAINT school_location
+		FOREIGN KEY (location_id)
+		REFERENCES location(id)
+		ON DELETE CASCADE,
+	CONSTRAINT school_pk PRIMARY KEY (id)
+);
+
+CREATE OR REPLACE TRIGGER school_autoincrement
+BEFORE INSERT ON school
+FOR EACH ROW
+
+BEGIN
+  SELECT school_seq.NEXTVAL
+  INTO   :new.id
+  FROM   dual;
+END;
+
+
+---------------------------------------------------
+
+CREATE SEQUENCE s_u_connector_seq START WITH 1;
+
+CREATE TABLE school_user_connector(
+	id NUMBER(10) NOT NULL,
+	user_id NUMBER(10) NOT NULL,
+	school_id NUMBER(10) NOT NULL,
+	CONSTRAINT school_connector_school
+		FOREIGN KEY (school_id)
+		REFERENCES school(id)
+		ON DELETE CASCADE,
+	CONSTRAINT school_connector_user
+		FOREIGN KEY (user_id)
+		REFERENCES enduser(id)
+		ON DELETE CASCADE,
+	CONSTRAINT school_user_connector_pk PRIMARY KEY (id)
+);
+
+CREATE OR REPLACE TRIGGER s_u_connector_autoincrement
+BEFORE INSERT ON school_user_connector
+FOR EACH ROW
+
+BEGIN
+  SELECT s_u_connector_seq.NEXTVAL
+  INTO   :new.id
+  FROM   dual;
+END;
+
+
+
+---------------------------------------------------------
+
+CREATE SEQUENCE workplace_seq START WITH 1;
+
+CREATE TABLE workplace(
+	id NUMBER(10) NOT NULL,
+	location_id NUMBER(10) NOT NULL,
+	name varchar2(30),
+	workplace_type varchar2(30),
+	CONSTRAINT workplace_location
+		FOREIGN KEY (location_id)
+		REFERENCES location(id)
+		ON DELETE CASCADE,
+	CONSTRAINT workplace_pk PRIMARY KEY (id)
+);
+
+CREATE OR REPLACE TRIGGER workplace_autoincrement
+BEFORE INSERT ON workplace
+FOR EACH ROW
+
+BEGIN
+  SELECT workplace_seq.NEXTVAL
+  INTO   :new.id
+  FROM   dual;
+END;
+
+
+--------------------------------------------------------
+
+CREATE SEQUENCE w_u_connector_seq START WITH 1;
+
+CREATE TABLE workplace_user_connector(
+	id NUMBER(10) NOT NULL,
+	user_id NUMBER(10) NOT NULL,
+	workplace_id NUMBER(10) NOT NULL,
+	CONSTRAINT wrk
+		FOREIGN KEY (workplace_id)
+		REFERENCES workplace(id)
+		ON DELETE CASCADE,
+	CONSTRAINT workplace_connector_user
+		FOREIGN KEY (user_id)
+		REFERENCES enduser(id)
+		ON DELETE CASCADE,
+	CONSTRAINT workplace_user_connector_pk PRIMARY KEY (id)
+);
+
+CREATE OR REPLACE TRIGGER w_u_connector_autoincrement
+BEFORE INSERT ON workplace_user_connector
+FOR EACH ROW
+
+BEGIN
+  SELECT w_u_connector_seq.NEXTVAL
+  INTO   :new.id
+  FROM   dual;
+END;
+
+
+--------------------------------------------------------
+
+CREATE SEQUENCE post_seq START WITH 1;
+
+CREATE TABLE post(
+	id NUMBER(10) NOT NULL,
+	user_id NUMBER(10) NOT NULL,
+	creation_time TIMESTAMP NOT NULL,
+	content varchar2(999) NOT NULL,
+	CONSTRAINT post_user
+		FOREIGN KEY (user_id)
+		REFERENCES enduser(id)
+		ON DELETE CASCADE,
+	CONSTRAINT post_pk PRIMARY KEY (id)
+);
+
+CREATE OR REPLACE TRIGGER post_autoincrement
+BEFORE INSERT ON post
+FOR EACH ROW
+
+BEGIN
+  SELECT post_seq.NEXTVAL
+  INTO   :new.id
+  FROM   dual;
+END;
+
+
+----------------------------------------------------------
+
+CREATE SEQUENCE post_likes_seq START WITH 1;
+
+CREATE TABLE post_likes(
+	id NUMBER(10) NOT,
+	user_id NUMBER(10) NOT NULL,
+	post_id NUMBER(10) NOT NULL,
+	CONSTRAINT post_likes_user
+		FOREIGN KEY (user_id)
+		REFERENCES enduser(id)
+		ON DELETE CASCADE,
+	CONSTRAINT post_likes_post
+		FOREIGN KEY (post_id)
+		REFERENCES post(id)
+		ON DELETE CASCADE,
+	
+	CONSTRAINT post_likes_pk PRIMARY KEY (id)
+);
+
+
+CREATE OR REPLACE TRIGGER post_likes_autoincrement
+BEFORE INSERT ON post_likes
+FOR EACH ROW
+
+BEGIN
+  SELECT post_likes_seq.NEXTVAL
+  INTO   :new.id
+  FROM   dual;
+END;
+
+
+
+-----------------------------------------------------------
+
+CREATE SEQUENCE comments_seq START WITH 1;
+
+CREATE TABLE comments(
+	id NUMBER(10) NOT NULL,
+	user_id NUMBER(10) NOT NULL,
+	creation_time TIMESTAMP NOT NULL,
+	content varchar2(999) NOT NULL,
+	CONSTRAINT comment_user
+		FOREIGN KEY (user_id)
+		REFERENCES enduser(id)
+		ON DELETE CASCADE,
+	CONSTRAINT comment_pk PRIMARY KEY (id)
+);
+
+CREATE OR REPLACE TRIGGER comments_autoincrement
+BEFORE INSERT ON comment
+FOR EACH ROW
+
+BEGIN
+  SELECT comments_seq.NEXTVAL
+  INTO   :new.id
+  FROM   dual;
+END;
+
+
+-------------------------------------------------------------------
+
+CREATE SEQUENCE comments_likes_seq START WITH 1;
+
+CREATE TABLE comments_likes(
+	id NUMBER(10) NOT NULL,
+	user_id NUMBER(10) NOT NULL,
+	comment_id NUMBER(10) NOT NULL,
+	CONSTRAINT comment_likes_user
+		FOREIGN KEY (user_id)
+		REFERENCES enduser(id)
+		ON DELETE CASCADE,
+	CONSTRAINT comments_likes_comment
+		FOREIGN KEY (comment_id)
+		REFERENCES comments(id)
+		ON DELETE CASCADE,
+	CONSTRAINT comments_likes_pk PRIMARY KEY (id)
+);
+
+CREATE OR REPLACE TRIGGER comments_likes_autoincrement
+BEFORE INSERT ON comments_likes
+FOR EACH ROW
+
+BEGIN
+  SELECT comments_likes_seq.NEXTVAL
+  INTO   :new.id
+  FROM   dual;
+END;
+
+
+------------------------------------------------------------------
+
+CREATE SEQUENCE groups_seq START WITH 1;
+
+
+CREATE TABLE groups(
+	id NUMBER(10) NOT NULL,
+	name varchar2(50) NOT NULL,
+	description varchar2(999),
+	CONSTRAINT groups_pk PRIMARY KEY (id)
+);
+
+
+CREATE OR REPLACE TRIGGER groups_autoincrement
+BEFORE INSERT ON groups
+FOR EACH ROW
+
+BEGIN
+  SELECT groups_seq.NEXTVAL
+  INTO   :new.id
+  FROM   dual;
+END;
+
+
+---------------------------------------------------------------------
+
+CREATE SEQUENCE groups_members_seq START WITH 1;
+
+
+CREATE TABLE groups_members(
+	id NUMBER(10) NOT NULL,
+	user_id NUMBER(10) NOT NULL,
+	group_id NUMBER(10) NOT NULL,
+	CONSTRAINT groups_members_user
+		FOREIGN KEY (user_id)
+		REFERENCES enduser(id)
+		ON DELETE CASCADE,
+	CONSTRAINT groups_members_group
+		FOREIGN KEY (group_id)
+		REFERENCES groups(id)
+		ON DELETE CASCADE,
+	CONSTRAINT groups_members_pk PRIMARY KEY (id)
+);
+
+
+CREATE OR REPLACE TRIGGER groups_members_autoincrement
+BEFORE INSERT ON groups_members
+FOR EACH ROW
+
+BEGIN
+  SELECT groups_members_seq.NEXTVAL
+  INTO   :new.id
+  FROM   dual;
+END;
+
+
+-------------------------------------------------------------------
+
+CREATE SEQUENCE groups_admins_seq START WITH 1;
+
+CREATE TABLE groups_admins(
+	id NUMBER(10) NOT NULL,
+	user_id NUMBER(10) NOT NULL,
+	group_id NUMBER(10) NOT NULL,
+	CONSTRAINT groups_admins_user
+		FOREIGN KEY (user_id)
+		REFERENCES enduser(id)
+		ON DELETE CASCADE,
+	CONSTRAINT groups_admins_groups
+		FOREIGN KEY (group_id)
+		REFERENCES groups(id)
+		ON DELETE CASCADE,
+	CONSTRAINT groups_admins_pk PRIMARY KEY (id)
+);
+
+CREATE OR REPLACE TRIGGER groups_admins_autoincrement
+BEFORE INSERT ON groups_admins
+FOR EACH ROW
+
+BEGIN
+  SELECT groups_admins_seq.NEXTVAL
+  INTO   :new.id
+  FROM   dual;
+END;
+
+
+-----------------------------------------------------------------------------
+
+CREATE SEQUENCE message_seq START WITH 1;
+
+CREATE TABLE message(
+	id NUMBER(10) NOT NULL,
+	user_id1 NUMBER(10) NOT NULL,
+	user_id2 NUMBER(10) NOT NULL,
+	content varchar2(999) NOT NULL,
+	creation_time TIMESTAMP NOT NULL,
+	CONSTRAINT message_user1
+		FOREIGN KEY (user_id1)
+		REFERENCES enduser(id)
+		ON DELETE CASCADE,
+	CONSTRAINT message_user2
+		FOREIGN KEY (user_id2)
+		REFERENCES enduser(id)
+		ON DELETE CASCADE,
+	CONSTRAINT message_pk PRIMARY KEY (id)
+);
+
+CREATE OR REPLACE TRIGGER message_autoincrement
+BEFORE INSERT ON message
+FOR EACH ROW
+
+BEGIN
+  SELECT message_seq.NEXTVAL
+  INTO   :new.id
+  FROM   dual;
+END;
+
+
+-------------------------------------------------
+
+CREATE SEQUENCE photos_seq START WITH 1;
+
+CREATE TABLE photos(
+	id NUMBER(10) NOT NULL,
+	user_id NUMBER(10) NOT NULL,
+	photo VARCHAR2(50) NOT NULL,
+	CONSTRAINT photos_user
+		FOREIGN KEY (user_id)
+		REFERENCES enduser(id)
+		ON DELETE CASCADE,
+	CONSTRAINT photos_pk PRIMARY KEY (id)
+);
+
+CREATE OR REPLACE TRIGGER photos_autoincrement
+BEFORE INSERT ON photos
+FOR EACH ROW
+
+BEGIN
+  SELECT photos_seq.NEXTVAL
+  INTO   :new.id
+  FROM   dual;
+END;
+
+
+------------------------------------------------
+
+CREATE SEQUENCE follows_seq START WITH 1;
+
+CREATE TABLE follows(
+	id NUMBER(10) NOT NULL,
+	user_id1 NUMBER(10) NOT NULL,
+	user_id2 NUMBER(10) NOT NULL,
+	CONSTRAINT follows_user1
+		FOREIGN KEY (user_id1)
+		REFERENCES enduser(id)
+		ON DELETE CASCADE,
+	CONSTRAINT follows_user2
+		FOREIGN KEY (user_id2)
+		REFERENCES enduser(id)
+		ON DELETE CASCADE,
+	CONSTRAINT follows_pk PRIMARY KEY (id)
+);
+
+CREATE OR REPLACE TRIGGER follows_autoincrement
+BEFORE INSERT ON follows
+FOR EACH ROW
+
+BEGIN
+  SELECT follows_seq.NEXTVAL
+  INTO   :new.id
+  FROM   dual;
+END;
+
+
+
+
+
+
+
+
+
+
+
+
+
