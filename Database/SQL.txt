@@ -213,11 +213,20 @@ BEGIN
 END;
 /
 
+create or replace
+TRIGGER post_time
+BEFORE INSERT OR UPDATE ON post
+FOR EACH ROW
+BEGIN
+    :new.creation_time := to_char(sysdate, 'yyyy/mm/dd hh24:mi:ss');
+END;
+/
+
 
 CREATE SEQUENCE post_likes_seq START WITH 1;
 
 CREATE TABLE post_likes(
-	id NUMBER(10) NOT,
+	id NUMBER(10) NOT NULL,
 	user_id NUMBER(10) NOT NULL,
 	post_id NUMBER(10) NOT NULL,
 	CONSTRAINT post_likes_user
@@ -251,7 +260,7 @@ CREATE SEQUENCE comments_seq START WITH 1;
 CREATE TABLE comments(
 	id NUMBER(10) NOT NULL,
 	user_id NUMBER(10) NOT NULL,
-	creation_time TIMESTAMP NOT NULL,
+	creation_time varchar2(100) NOT NULL,
 	content varchar2(999) NOT NULL,
 	CONSTRAINT comment_user
 		FOREIGN KEY (user_id)
@@ -261,13 +270,22 @@ CREATE TABLE comments(
 );
 
 CREATE OR REPLACE TRIGGER comments_autoincrement
-BEFORE INSERT ON comment
+BEFORE INSERT ON comments
 FOR EACH ROW
 
 BEGIN
   SELECT comments_seq.NEXTVAL
   INTO   :new.id
   FROM   dual;
+END;
+/
+
+create or replace
+TRIGGER comments_time
+BEFORE INSERT OR UPDATE ON comments
+FOR EACH ROW
+BEGIN
+    :new.creation_time := to_char(sysdate, 'yyyy/mm/dd hh24:mi:ss');
 END;
 /
 
@@ -391,7 +409,7 @@ CREATE TABLE message(
 	user_id1 NUMBER(10) NOT NULL,
 	user_id2 NUMBER(10) NOT NULL,
 	content varchar2(999) NOT NULL,
-	creation_time TIMESTAMP NOT NULL,
+	creation_time varchar2(100) NOT NULL,
 	CONSTRAINT message_user1
 		FOREIGN KEY (user_id1)
 		REFERENCES enduser(id)
@@ -411,6 +429,15 @@ BEGIN
   SELECT message_seq.NEXTVAL
   INTO   :new.id
   FROM   dual;
+END;
+/
+
+create or replace
+TRIGGER message_time
+BEFORE INSERT OR UPDATE ON message
+FOR EACH ROW
+BEGIN
+    :new.creation_time := to_char(sysdate, 'yyyy/mm/dd hh24:mi:ss');
 END;
 /
 
