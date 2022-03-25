@@ -3,18 +3,67 @@ package com.example.sociallobster.Controller;
 import com.example.sociallobster.Model.User;
 import com.example.sociallobster.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "/api/user", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "/api/user")
 public class UserController {
+    //
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
+
+    @PostMapping("/save")
+    public ResponseEntity<String> SaveUser(@RequestBody User user){
+        try{
+            userRepository.save(user);
+        }
+        catch (Exception e){
+            return new ResponseEntity<String>("Not inserted", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<String>("Successfully inserted", HttpStatus.OK);
+    }
+
+    @GetMapping("/select")
+    public ResponseEntity<List<User>> getUser() {
+        List<User> list = null;
+        try {
+            list = userRepository.findAll();
+        } catch (Exception e) {
+            return new ResponseEntity<List<User>>(list, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<List<User>>(list, HttpStatus.OK);
+    }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteUser(@PathVariable("id") Integer id){
+        try{
+            userRepository.deleteById(id);
+        }
+        catch(Exception e){
+            return new ResponseEntity<>("Could not delete", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
+    }
+
+    public String updateUser(@RequestBody User user){
+        Optional<User> temp = userRepository.findById(user.getId());
+        User user1 = temp.get();
+        user1.setUsername(user.getUsername());
+        user1.setEmail(user.getEmail());
+        user1.setPassword(user.getPassword());
+        userRepository.save(user1);
+
+        return "Successfully updated!";
+    }
+
+    //
+    /*
     @PostMapping("/")
     public User postUser(@Valid @RequestBody User user){
         return userRepository.saveAndFlush(user);
@@ -46,4 +95,6 @@ public class UserController {
         dbUser.setEmail(User.getEmail());
         return userRepository.save(dbUser);
     }
+
+     */
 }
