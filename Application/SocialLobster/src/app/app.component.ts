@@ -1,4 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { User } from './user';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,20 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'SocialLobster';
+  public user: User[];
+
+  constructor(private userService: UserService){}
+
+  public getUsers(): void{
+    this.userService.getUser().subscribe(
+      (response: User[]) => {
+        this.user = response;
+      },
+      (error: HttpErrorResponse) =>{
+        alert(error.message);
+      }
+
+    )
+    
+  }
 }
