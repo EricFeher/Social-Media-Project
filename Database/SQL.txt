@@ -17,9 +17,8 @@ BEGIN
   INTO   :new.id
   FROM   dual;
 END;
+/
 
-
----------------------------------------------------
 
 CREATE SEQUENCE location_seq START WITH 1;
 
@@ -41,9 +40,8 @@ BEGIN
   INTO   :new.id
   FROM   dual;
 END;
+/
 
-
-------------------------------------------------------
 
 CREATE SEQUENCE userdata_seq START WITH 1;
 
@@ -76,9 +74,8 @@ BEGIN
   INTO   :new.id
   FROM   dual;
 END;
+/
 
-
------------------------------------------------------
 
 CREATE SEQUENCE school_seq START WITH 1;
 
@@ -103,9 +100,8 @@ BEGIN
   INTO   :new.id
   FROM   dual;
 END;
+/
 
-
----------------------------------------------------
 
 CREATE SEQUENCE s_u_connector_seq START WITH 1;
 
@@ -133,10 +129,9 @@ BEGIN
   INTO   :new.id
   FROM   dual;
 END;
+/
 
 
-
----------------------------------------------------------
 
 CREATE SEQUENCE workplace_seq START WITH 1;
 
@@ -161,9 +156,8 @@ BEGIN
   INTO   :new.id
   FROM   dual;
 END;
+/
 
-
---------------------------------------------------------
 
 CREATE SEQUENCE w_u_connector_seq START WITH 1;
 
@@ -191,9 +185,8 @@ BEGIN
   INTO   :new.id
   FROM   dual;
 END;
+/
 
-
---------------------------------------------------------
 
 CREATE SEQUENCE post_seq START WITH 1;
 
@@ -218,9 +211,8 @@ BEGIN
   INTO   :new.id
   FROM   dual;
 END;
+/
 
-
-----------------------------------------------------------
 
 CREATE SEQUENCE post_likes_seq START WITH 1;
 
@@ -250,10 +242,9 @@ BEGIN
   INTO   :new.id
   FROM   dual;
 END;
+/
 
 
-
------------------------------------------------------------
 
 CREATE SEQUENCE comments_seq START WITH 1;
 
@@ -278,9 +269,8 @@ BEGIN
   INTO   :new.id
   FROM   dual;
 END;
+/
 
-
--------------------------------------------------------------------
 
 CREATE SEQUENCE comments_likes_seq START WITH 1;
 
@@ -308,9 +298,8 @@ BEGIN
   INTO   :new.id
   FROM   dual;
 END;
+/
 
-
-------------------------------------------------------------------
 
 CREATE SEQUENCE groups_seq START WITH 1;
 
@@ -332,9 +321,8 @@ BEGIN
   INTO   :new.id
   FROM   dual;
 END;
+/
 
-
----------------------------------------------------------------------
 
 CREATE SEQUENCE groups_members_seq START WITH 1;
 
@@ -364,9 +352,8 @@ BEGIN
   INTO   :new.id
   FROM   dual;
 END;
+/
 
-
--------------------------------------------------------------------
 
 CREATE SEQUENCE groups_admins_seq START WITH 1;
 
@@ -394,9 +381,8 @@ BEGIN
   INTO   :new.id
   FROM   dual;
 END;
+/
 
-
------------------------------------------------------------------------------
 
 CREATE SEQUENCE message_seq START WITH 1;
 
@@ -426,9 +412,8 @@ BEGIN
   INTO   :new.id
   FROM   dual;
 END;
+/
 
-
--------------------------------------------------
 
 CREATE SEQUENCE photos_seq START WITH 1;
 
@@ -452,9 +437,8 @@ BEGIN
   INTO   :new.id
   FROM   dual;
 END;
+/
 
-
-------------------------------------------------
 
 CREATE SEQUENCE follows_seq START WITH 1;
 
@@ -482,16 +466,4 @@ BEGIN
   INTO   :new.id
   FROM   dual;
 END;
-
-
-
-
-
-
-
-
-
-
-
-
-
+/
