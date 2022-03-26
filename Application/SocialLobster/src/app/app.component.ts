@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { User } from './user';
+import { User } from './models/user.model';
 import { UserService } from './user.service';
 
 @Component({

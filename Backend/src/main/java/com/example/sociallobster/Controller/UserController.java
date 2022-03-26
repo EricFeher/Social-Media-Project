@@ -15,7 +15,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path = "/api/user")
 public class UserController {
-    //
     @Autowired
     private UserRepository userRepository;
 
@@ -61,40 +60,4 @@ public class UserController {
 
         return "Successfully updated!";
     }
-
-    //
-    /*
-    @PostMapping("/")
-    public User postUser(@Valid @RequestBody User user){
-        return userRepository.saveAndFlush(user);
-    }
-
-
-    @GetMapping("/all")
-    public List<User> getUsers(){
-        return userRepository.findAll();
-    }
-
-    @GetMapping("/{id}")
-    public User getUserById(@PathVariable("id") Long id){
-        User user= userRepository.findById(id).get();
-        return user;
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable("id") Long id){
-        userRepository.deleteById(id);
-        return ResponseEntity.ok().build();
-    }
-
-    @PutMapping("/{id}/address")
-    public User updateUser(@PathVariable("id") Long id, @Valid @RequestBody User User){
-        User dbUser =  userRepository.findById(id).get();
-        dbUser.setUsername(User.getUsername());
-        dbUser.setPassword(User.getPassword());
-        dbUser.setEmail(User.getEmail());
-        return userRepository.save(dbUser);
-    }
-
-     */
 }

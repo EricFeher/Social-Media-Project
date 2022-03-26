@@ -5,10 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { LoginComponent } from './components/login/login.component';
-import { Navbar2Component } from './components/navbar2/navbar2.component';
-import { RegisterComponent } from './components/register/register.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { LoginComponent } from './login/login.component';
+import { Navbar2Component } from './navbar2/navbar2.component';
+import { RegisterComponent } from './register/register.component';
 import { FeedComponent } from './feed/feed.component';
 import { GroupsComponent } from './groups/groups.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -27,6 +27,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
+import { UserListComponent } from './components/user-list/user-list.component';
 
 
 /*
@@ -67,6 +68,7 @@ import { FormsModule } from '@angular/forms';
     ProfileComponent,
     ExploreComponent,
     NavigationBarComponent,
+    UserListComponent,
   ],
   imports: [
     
