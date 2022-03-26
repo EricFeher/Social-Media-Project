@@ -43,24 +43,53 @@ END;
 /
 
 
+CREATE SEQUENCE photos_seq START WITH 1;
+
+CREATE TABLE photos(
+	id NUMBER(10) NOT NULL,
+	user_id NUMBER(10) NOT NULL,
+	photo VARCHAR2(50) NOT NULL,
+	CONSTRAINT photos_user
+		FOREIGN KEY (user_id)
+		REFERENCES enduser(id)
+		ON DELETE CASCADE,
+	CONSTRAINT photos_pk PRIMARY KEY (id)
+);
+
+CREATE OR REPLACE TRIGGER photos_autoincrement
+BEFORE INSERT ON photos
+FOR EACH ROW
+
+BEGIN
+  SELECT photos_seq.NEXTVAL
+  INTO   :new.id
+  FROM   dual;
+END;
+/
+
+
 CREATE SEQUENCE userdata_seq START WITH 1;
 
 CREATE TABLE userdata (
 	id NUMBER(10) NOT NULL,
 	user_id NUMBER(10) NOT NULL,
 	location_id NUMBER(10) NOT NULL,
-	photoid NUMBER(10),
+	photo_id NUMBER(10),
 	first_name varchar2(30),
 	last_name varchar2(30),
 	gender varchar2(1),
 	birthday DATE,
-	CONSTRAINT user_location
+	CONSTRAINT userdata_location
 		FOREIGN KEY (location_id)
 		REFERENCES location(id)
 		ON DELETE CASCADE,
-	CONSTRAINT usr
+	CONSTRAINT userdata_user
 		FOREIGN KEY (user_id)
 		REFERENCES enduser(id)
+		ON DELETE CASCADE,
+      CONSTRAINT userdata_photo
+		FOREIGN KEY (photo_id)
+		REFERENCES photos(id)
 		ON DELETE CASCADE,
 	CONSTRAINT userdata_pk PRIMARY KEY (id)
 );
@@ -441,30 +470,6 @@ BEGIN
 END;
 /
 
-
-CREATE SEQUENCE photos_seq START WITH 1;
-
-CREATE TABLE photos(
-	id NUMBER(10) NOT NULL,
-	user_id NUMBER(10) NOT NULL,
-	photo VARCHAR2(50) NOT NULL,
-	CONSTRAINT photos_user
-		FOREIGN KEY (user_id)
-		REFERENCES enduser(id)
-		ON DELETE CASCADE,
-	CONSTRAINT photos_pk PRIMARY KEY (id)
-);
-
-CREATE OR REPLACE TRIGGER photos_autoincrement
-BEFORE INSERT ON photos
-FOR EACH ROW
-
-BEGIN
-  SELECT photos_seq.NEXTVAL
-  INTO   :new.id
-  FROM   dual;
-END;
-/
 
 
 CREATE SEQUENCE follows_seq START WITH 1;
