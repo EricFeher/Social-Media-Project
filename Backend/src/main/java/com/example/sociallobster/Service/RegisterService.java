@@ -1,5 +1,6 @@
 package com.example.sociallobster.Service;
 
+
 import com.example.sociallobster.Model.User;
 import com.example.sociallobster.Repository.RegisterRepository;
 import org.springframework.beans.factory.annotation.Autowired;

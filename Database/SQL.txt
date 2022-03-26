@@ -111,8 +111,8 @@ CREATE SEQUENCE school_seq START WITH 1;
 CREATE TABLE school(
 	id NUMBER(10) NOT NULL,
 	location_id NUMBER(10) NOT NULL,
-	name varchar2(30),
-	school_type varchar2(30),
+	name varchar2(100),
+	school_type varchar2(100),
 	CONSTRAINT school_location
 		FOREIGN KEY (location_id)
 		REFERENCES location(id)
@@ -167,8 +167,8 @@ CREATE SEQUENCE workplace_seq START WITH 1;
 CREATE TABLE workplace(
 	id NUMBER(10) NOT NULL,
 	location_id NUMBER(10) NOT NULL,
-	name varchar2(30),
-	workplace_type varchar2(30),
+	name varchar2(100),
+	workplace_type varchar2(100),
 	CONSTRAINT workplace_location
 		FOREIGN KEY (location_id)
 		REFERENCES location(id)
@@ -222,8 +222,8 @@ CREATE SEQUENCE post_seq START WITH 1;
 CREATE TABLE post(
 	id NUMBER(10) NOT NULL,
 	user_id NUMBER(10) NOT NULL,
-	creation_time TIMESTAMP NOT NULL,
 	content varchar2(999) NOT NULL,
+	creation_time varchar2(100) NOT NULL,
 	CONSTRAINT post_user
 		FOREIGN KEY (user_id)
 		REFERENCES enduser(id)
@@ -289,12 +289,17 @@ CREATE SEQUENCE comments_seq START WITH 1;
 CREATE TABLE comments(
 	id NUMBER(10) NOT NULL,
 	user_id NUMBER(10) NOT NULL,
-	creation_time varchar2(100) NOT NULL,
+	post_id NUMBER(10) NOT NULL,
 	content varchar2(999) NOT NULL,
+	creation_time varchar2(100) NOT NULL,
 	CONSTRAINT comment_user
 		FOREIGN KEY (user_id)
 		REFERENCES enduser(id)
 		ON DELETE CASCADE,
+	CONSTRAINT comment_post
+		FOREIGN KEY (post_id)
+		REFERENCES post(id)
+		ON DELETE CASCADE,	
 	CONSTRAINT comment_pk PRIMARY KEY (id)
 );
 

@@ -1,6 +1,8 @@
 package com.example.sociallobster.Model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -8,12 +10,11 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "ENDUSER")
-public class User {
+@Table(name = "PHOTOS")
+public class Photos {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String username;
-    private String password;
-    private String email;
+    private int user_id;
+    private String photo;
 }
