@@ -28,6 +28,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { AdminComponent } from './admin/admin.component';
+import { CommentsComponent } from './components/listings/comments/comments.component';
+import { LocationComponent } from './components/listings/location/location.component';
+import { MessageComponent } from './components/listings/message/message.component';
+import { PhotosComponent } from './components/listings/photos/photos.component';
+import { PostComponent } from './components/listings/post/post.component';
+import { SchoolComponent } from './components/listings/school/school.component';
+import { UserdataComponent } from './components/listings/userdata/userdata.component';
+import { WorkplaceComponent } from './components/listings/workplace/workplace.component';
 
 
 /*
@@ -69,6 +78,15 @@ import { FormsModule } from '@angular/forms';
     ExploreComponent,
     NavigationBarComponent,
     UserListComponent,
+    AdminComponent,
+    CommentsComponent,
+    LocationComponent,
+    MessageComponent,
+    PhotosComponent,
+    PostComponent,
+    SchoolComponent,
+    UserdataComponent,
+    WorkplaceComponent,
   ],
   imports: [
     
