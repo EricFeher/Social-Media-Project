@@ -50,7 +50,7 @@ public class LocationController {
         return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
     }
 
-    public String updateUser(@RequestBody Location location){
+    public String updateLocation(@RequestBody Location location){
         Optional<Location> temp = locationRepository.findById(location.getId());
         Location location1 = temp.get();
         location1.setPostcode(location.getPostcode());
