@@ -49,7 +49,7 @@ public class GroupsController {
         return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
     }
 
-    public String updateUser(@RequestBody Groups groups){
+    public String updateGroups(@RequestBody Groups groups){
         Optional<Groups> temp = groupsRepository.findById(groups.getId());
         Groups groups1 = temp.get();
         groups1.setName(groups.getName());
