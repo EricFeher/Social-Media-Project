@@ -1,1 +1,16 @@
-<p>school works!</p>
+<div class="container">
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>name</th>
+        <th>school type</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of schools">
+        <td><span>{{user.name}}</span></td>
+        <td><span>{{user.school_type}}</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>

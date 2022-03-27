@@ -7,6 +7,7 @@ import { GroupsComponent } from './groups/groups.component';
 import { FeedComponent } from './feed/feed.component';
 import { ExploreComponent } from './explore/explore.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'groups', component: GroupsComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'explore', component: ExploreComponent},
-  {path: 'userlist', component: UserListComponent}
+  {path: 'userlist', component: UserListComponent},
+  {path: 'admin', component: AdminComponent}
 ];
 
 @NgModule({
