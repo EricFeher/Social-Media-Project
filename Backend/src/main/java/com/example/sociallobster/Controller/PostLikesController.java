@@ -57,6 +57,8 @@ public class PostLikesController {
         PostLikes postLikes1 = temp.get();
         postLikes1.setUser_id(postLikes.getUser_id());
         postLikes1.setPost_id(postLikes.getPost_id());
+        postLikesRepository.save(postLikes1);
+
         return "Successfully updated!";
     }
 

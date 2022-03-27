@@ -54,6 +54,7 @@ public class SchoolUserConnectorController {
         SchoolUserConnector schoolUserConnector1 = temp.get();
         schoolUserConnector1.setUser_id(schoolUserConnector.getUser_id());
         schoolUserConnector1.setSchool_id(schoolUserConnector.getSchool_id());
+        schoolUserConnectorRepository.save(schoolUserConnector1);
 
         return "Successfully updated!";
     }

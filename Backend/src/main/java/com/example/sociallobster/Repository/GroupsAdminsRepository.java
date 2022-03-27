@@ -1,9 +1,9 @@
 package com.example.sociallobster.Repository;
 
-import com.example.sociallobster.Model.WorkplaceUserConnector;
+import com.example.sociallobster.Model.GroupsAdmins;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface WorkplaceUserConnectorReopisotry extends JpaRepository<WorkplaceUserConnector, Integer> {
+public interface GroupsAdminsRepository extends JpaRepository<GroupsAdmins, Integer> {
 }

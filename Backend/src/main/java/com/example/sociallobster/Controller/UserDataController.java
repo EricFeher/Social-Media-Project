@@ -60,6 +60,7 @@ public class UserDataController {
         userData1.setLast_name(userData.getLast_name());
         userData1.setGender(userData.getGender());
         userData1.setBirthday(userData.getBirthday());
+        userDataRepository.save(userData1);
 
         return "Successfully updated!";
     }

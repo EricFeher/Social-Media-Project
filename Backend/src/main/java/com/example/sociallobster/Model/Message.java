@@ -10,11 +10,13 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "WORKPLACE_USER_CONNECTOR")
-public class WorkplaceUserConnector {
+@Table(name = "Message")
+public class Message {
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private int user_id;
-    private int workplace_id;
+    private int user_id1;
+    private int user_id2;
+    private String content;
+    private String creation_time;
 }

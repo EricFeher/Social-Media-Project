@@ -55,6 +55,7 @@ public class SchoolController {
         school1.setLocation_id(school.getLocation_id());
         school1.setName(school.getName());
         school1.setSchool_type(school.getSchool_type());
+        schoolRepository.save(school1);
 
         return "Successfully updated!";
     }
