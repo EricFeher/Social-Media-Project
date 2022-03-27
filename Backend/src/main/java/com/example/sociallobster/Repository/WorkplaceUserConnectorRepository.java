@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface WorkplaceUserConnectorReopisotry extends JpaRepository<WorkplaceUserConnector, Integer> {
+public interface WorkplaceUserConnectorRepository extends JpaRepository<WorkplaceUserConnector, Integer> {
 }

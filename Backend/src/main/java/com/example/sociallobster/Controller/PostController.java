@@ -57,7 +57,7 @@ public class PostController {
         post1.setUser_id(post.getUser_id());
         post1.setContent(post.getContent());
         post1.setCreation_time(post.getCreation_time());
-
+        postRepository.save(post1);
         return "Successfully updated!";
     }
 

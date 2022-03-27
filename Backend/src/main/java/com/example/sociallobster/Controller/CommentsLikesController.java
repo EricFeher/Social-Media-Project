@@ -55,7 +55,7 @@ public class CommentsLikesController {
         CommentsLikes commentsLikes1 = temp.get();
         commentsLikes1.setUser_id(commentsLikes.getUser_id());
         commentsLikes1.setComment_id(commentsLikes.getComment_id());
-
+        commentsLikesRepository.save(commentsLikes1);
         return "Successfully updated!";
     }
 }

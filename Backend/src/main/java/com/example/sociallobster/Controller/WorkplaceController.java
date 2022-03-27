@@ -54,6 +54,7 @@ public class WorkplaceController {
         workplace1.setLocation_id(workplace.getLocation_id());
         workplace1.setName(workplace.getName());
         workplace1.setWorkplace_type(workplace.getWorkplace_type());
+        workplaceRepository.save(workplace1);
 
         return "Successfully updated!";
     }

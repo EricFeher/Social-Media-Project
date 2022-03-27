@@ -57,7 +57,7 @@ public class CommentsController {
         comments1.setPost_id(comments.getPost_id());
         comments1.setContent(comments.getContent());
         comments1.setCreation_time(comments.getCreation_time());
-
+        commentsRepository.save(comments1);
         return "Successfully updated!";
     }
 
