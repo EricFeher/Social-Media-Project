@@ -1,1 +1,22 @@
-<p>location works!</p>
+<div class="container">
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>id</th>
+        <th>postcode</th>
+        <th>city</th>
+        <th>street</th>
+        <th>housenumber/th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of location">
+        <td><span>{{user.id}}</span></td>
+        <td><span>{{user.postcode}}</span></td>
+        <td><span>{{user.city}}</span></td>
+        <td><span>{{user.street}}</span></td>
+        <td><span>{{user.housenumber}}</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>

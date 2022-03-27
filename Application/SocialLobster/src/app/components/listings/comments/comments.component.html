@@ -1,1 +1,22 @@
-<p>comments works!</p>
+<div class="container">
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>id</th>
+        <th>userid</th>
+        <th>postid</th>
+        <th>content</th>
+        <th>creation_time</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of comments">
+        <td><span>{{user.id}}</span></td>
+        <td><span>{{user.user_id}}</span></td>
+        <td><span>{{user.post_id}}</span></td>
+        <td><span>{{user.content}}</span></td>
+        <td><span>{{user.creation_time}}</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>

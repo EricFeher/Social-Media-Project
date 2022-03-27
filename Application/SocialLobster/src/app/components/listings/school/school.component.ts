@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SchoolService } from 'src/app/services/school.service';
 
 @Component({
-  selector: 'app-school',
+  selector: 'app-school-list',
   templateUrl: './school.component.html',
   styleUrls: ['./school.component.scss']
 })

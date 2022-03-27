@@ -1,1 +1,28 @@
-<p>userdata works!</p>
+<div class="container">
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>id</th>
+        <th>userid</th>
+        <th>locationid</th>
+        <th>photoid</th>
+        <th>firstname</th>
+        <th>lastname</th>
+        <th>gender</th>
+        <th>birthday</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of userdata">
+        <td><span>{{user.id}}</span></td>
+        <td><span>{{user.user_id}}</span></td>
+        <td><span>{{user.location_id}}</span></td>
+        <td><span>{{user.photo_id}}</span></td>
+        <td><span>{{user.first_name}}</span></td>
+        <td><span>{{user.last_name}}</span></td>
+        <td><span>{{user.gender}}</span></td>
+        <td><span>{{user.birthday}}</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
