@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WorkplaceService } from 'src/app/services/workplace.service';
 
 @Component({
-  selector: 'app-workplace',
+  selector: 'app-workplace-list',
   templateUrl: './workplace.component.html',
   styleUrls: ['./workplace.component.scss']
 })

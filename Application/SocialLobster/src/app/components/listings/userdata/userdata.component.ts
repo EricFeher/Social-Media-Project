@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserdataService } from 'src/app/services/userdata.service';
 
 @Component({
-  selector: 'app-userdata',
+  selector: 'app-userdata-list',
   templateUrl: './userdata.component.html',
   styleUrls: ['./userdata.component.scss']
 })
