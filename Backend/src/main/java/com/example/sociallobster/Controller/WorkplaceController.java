@@ -38,7 +38,7 @@ public class WorkplaceController {
         return new ResponseEntity<List<Workplace>>(list, HttpStatus.OK);
     }
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteUser(@PathVariable("id") Integer id){
+    public ResponseEntity<String> deleteWorkplace(@PathVariable("id") Integer id){
         try{
             workplaceRepository.deleteById(id);
         }
@@ -48,7 +48,7 @@ public class WorkplaceController {
         return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
     }
 
-    public String updateUser(@RequestBody Workplace workplace){
+    public String updateWorkplace(@RequestBody Workplace workplace){
         Optional<Workplace> temp = workplaceRepository.findById(workplace.getId());
         Workplace workplace1 = temp.get();
         workplace1.setLocation_id(workplace.getLocation_id());
