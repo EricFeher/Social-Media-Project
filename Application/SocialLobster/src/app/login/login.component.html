@@ -4,7 +4,7 @@
             <h2>Log In</h2>
             <p>{{msg}}</p>
             <mat-form-field>
-                <input matInput placeholder="Email" name="username" [(ngModel)]="user.email" required pattern="^w+@[a-zA-z_]+?\.[a-zA-Z]{2,3}$" #email="ngModel">
+                <input matInput placeholder="Email" name="Email" [(ngModel)]="user.email" required pattern="^w+@[a-zA-z_]+?\.[a-zA-Z]{2,3}$" #email="ngModel">
             </mat-form-field>
             <mat-form-field>
                 <input matInput type="password" placeholder="Password" name="password" required [(ngModel)]="user.password">
