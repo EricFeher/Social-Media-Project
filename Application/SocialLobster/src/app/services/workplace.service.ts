@@ -14,4 +14,9 @@ export class WorkplaceService {
 
   public getAll(): Observable<any>{
     return this.http.get<Workplace[]>(`${this.baseUrl}/select`)
-}}
+}
+
+public sendWorkplaceFromRemote(workplace: Workplace):Observable<any>{
+  return this.http.post<any>(`${this.baseUrl}/save`, workplace);
+}
+}

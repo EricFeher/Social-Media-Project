@@ -1,4 +1,19 @@
 <div class="container">
+    <form #Schoolform="ngForm" (ngSubmit)="sendSchool()">
+      <mat-form-field>
+        <input matInput type="number" placeholder="Location id" name="location_id" required [(ngModel)]="school.location_id">
+    </mat-form-field>
+    <br>
+      <mat-form-field>
+          <input matInput type="text" placeholder="name" name="name" required [(ngModel)]="school.name">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+          <input matInput type="text" placeholder="School Type" name="school_type" required [(ngModel)]="school.school_type">
+      </mat-form-field>
+      <button mat-raised-button color="primary">Send data</button>
+  </form>
+
     <table class="table table-bordered table-striped">
       <thead>
       <tr>

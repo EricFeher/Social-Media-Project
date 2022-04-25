@@ -1,4 +1,15 @@
 <div class="container">
+  <form #Postform="ngForm" (ngSubmit)="sendPost()">
+    <mat-form-field>
+        <input matInput type="number" placeholder="UserId" name="user_id" required [(ngModel)]="post.user_id">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput type="text" placeholder="Content" name="content" required [(ngModel)]="post.content">
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary">Send data</button>
+</form>
     <table class="table table-bordered table-striped">
       <thead>
       <tr>

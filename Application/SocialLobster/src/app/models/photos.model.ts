@@ -1,6 +1,6 @@
 export class Photos {
     id:number;
-    userid:number;
+    user_id:number;
     photo:String;
 
     

@@ -14,4 +14,11 @@ export class PhotosService {
 
   public getAll(): Observable<any>{
     return this.http.get<Photos[]>(`${this.baseUrl}/select`)
-}}
+}
+
+public sendPhotoFromRemote(photo: Photos):Observable<any>{
+  return this.http.post<any>(`${this.baseUrl}/save`, photo);
+}
+
+
+}

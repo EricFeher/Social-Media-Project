@@ -1,4 +1,19 @@
 <div class="container">
+  <form #Userform="ngForm" (ngSubmit)="sendWorkplace()">
+    <mat-form-field>
+        <input matInput type="number" placeholder="LocationId" name="location_id" required [(ngModel)]="workplaces.location_id">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput type="text" placeholder="Name" name="name" required [(ngModel)]="workplaces.name">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput type="text" placeholder="Workplacetype" name="workplace_type" required [(ngModel)]="workplaces.workplace_type">
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary">Send data</button>
+</form>
     <table class="table table-bordered table-striped">
       <thead>
       <tr>

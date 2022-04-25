@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Data
@@ -19,4 +20,6 @@ public class Comments {
     private int post_id;
     private String content;
     private  String creation_time;
+
+
 }

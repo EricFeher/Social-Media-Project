@@ -13,4 +13,9 @@ export class MessageService {
 
   public getAll(): Observable<any>{
     return this.http.get<Message[]>(`${this.baseUrl}/select`)
-}}
+}
+
+public sendMessageFromRemote(message: Message):Observable<any>{
+  return this.http.post<any>(`${this.baseUrl}/save`, message);
+}
+}

@@ -1,4 +1,36 @@
 <div class="container">
+  <form #Userdataform="ngForm" (ngSubmit)="sendUserdata()">
+    <mat-form-field>
+        <input matInput type="number" placeholder="UserId" name="user_id" required [(ngModel)]="userdatas.user_id">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput type="number" placeholder="LocationId" name="location_id" required [(ngModel)]="userdatas.location_id">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input matInput type="number" placeholder="PhotoId" name="photo_id" required [(ngModel)]="userdatas.photo_id">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput type="text" placeholder="Firstname" name="first_name" required [(ngModel)]="userdatas.first_name">
+</mat-form-field>
+<br>
+<mat-form-field>
+  <input matInput type="text" placeholder="LastName" name="last_name" required [(ngModel)]="userdatas.last_name">
+</mat-form-field>
+<br>
+<mat-form-field>
+  <input matInput type="text" placeholder="Gender" name="gender" required [(ngModel)]="userdatas.gender">
+</mat-form-field>
+<br>
+<mat-form-field>
+  <input matInput type="date" placeholder="Birthday" name="birthday" required [(ngModel)]="userdatas.birthday">
+</mat-form-field>
+<br>
+
+    <button mat-raised-button color="primary">Send data</button>
+</form>
     <table class="table table-bordered table-striped">
       <thead>
       <tr>

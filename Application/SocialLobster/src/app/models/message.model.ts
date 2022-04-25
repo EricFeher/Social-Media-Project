@@ -1,7 +1,7 @@
 export class Message {
     id:number;
-    userid1:number;
-    userid2:number;
+    user_id1:number;
+    user_id2:number;
     content:String;
     creationtime:String;
 

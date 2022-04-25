@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Comments } from 'src/app/models/comments.model';
 import { CommentsService } from 'src/app/services/comments.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { CommentsService } from 'src/app/services/comments.service';
 export class CommentsComponent implements OnInit {
 
   comments: any[];
+  comment = new Comments();
   constructor(private commentService: CommentsService) { }
 
   ngOnInit(): void {
@@ -24,5 +26,12 @@ export class CommentsComponent implements OnInit {
       }
     );
   }
+
+  sendComment(): void{
+    this.commentService.sendCommentFromRemote(this.comment).subscribe(
+    )
+    window.location.reload();
+  }
+
 
 }

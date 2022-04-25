@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from 'src/app/models/location.model';
 import { LocationService } from 'src/app/services/location.service';
 
 @Component({
@@ -8,7 +9,8 @@ import { LocationService } from 'src/app/services/location.service';
 })
 export class LocationComponent implements OnInit {
 
-  location: any[];
+  location = new Location();
+  locations: any[];
   constructor(private locationService: LocationService) { }
 
   ngOnInit(): void {
@@ -20,8 +22,16 @@ export class LocationComponent implements OnInit {
     .subscribe(
       data => {
         console.log(data);
-        this.location = data;
+        this.locations = data;
       }
     );
   }
+
+  sendLocation(): void{
+    this.locationService.sendLocationFromRemote(this.location).subscribe(
+      
+    )
+  window.location.reload();
+  }
+
 }

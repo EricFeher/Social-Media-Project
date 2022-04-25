@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Photos } from 'src/app/models/photos.model';
 import { PhotosService } from 'src/app/services/photos.service';
 
 @Component({
@@ -11,6 +12,7 @@ export class PhotosComponent implements OnInit {
 
  
   photos: any[];
+  photo = new Photos();
   constructor(private photoService: PhotosService) { }
 
   ngOnInit(): void {
@@ -26,4 +28,11 @@ export class PhotosComponent implements OnInit {
       }
     );
   }
+
+  sendPhoto(): void{
+    this.photoService.sendPhotoFromRemote(this.photo).subscribe(
+    )
+    window.location.reload();
+  }
+
 }

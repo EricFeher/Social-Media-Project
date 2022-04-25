@@ -1,4 +1,22 @@
 <div class="container">
+  <form #Locationform="ngForm" (ngSubmit)="sendLocation()">
+    <mat-form-field>
+      <input matInput type="number" placeholder="Postcode" name="postcode" required [(ngModel)]="location.postcode">
+  </mat-form-field>
+  <br>
+    <mat-form-field>
+        <input matInput type="text" placeholder="City" name="city" required [(ngModel)]="location.city">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput type="text" placeholder="Street" name="street" required [(ngModel)]="location.street">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input matInput type="number" placeholder="House Number" name="housenumber" required [(ngModel)]="location.housenumber">
+  </mat-form-field>
+    <button mat-raised-button color="primary">Send data</button>
+</form>
     <table class="table table-bordered table-striped">
       <thead>
       <tr>
@@ -10,7 +28,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let user of location">
+      <tr *ngFor="let user of locations">
         <td><span>{{user.id}}</span></td>
         <td><span>{{user.postcode}}</span></td>
         <td><span>{{user.city}}</span></td>

@@ -1,6 +1,21 @@
 
 
 <div class="container">
+    <form #Userform="ngForm" (ngSubmit)="sendUser()">
+      <mat-form-field>
+          <input matInput type="email" placeholder="Email" name="email" required [(ngModel)]="user.email">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+          <input matInput type="text" placeholder="Username" name="username" required [(ngModel)]="user.username">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+          <input matInput type="password" placeholder="Password" name="password" required [(ngModel)]="user.password">
+      </mat-form-field>
+      <br>
+      <button mat-raised-button color="primary">Send data</button>
+  </form>
     <table class="table table-bordered table-striped">
       <thead>
       <tr>

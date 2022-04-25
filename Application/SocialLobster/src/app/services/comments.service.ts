@@ -15,4 +15,8 @@ export class CommentsService {
   public getAll(): Observable<any>{
     return this.http.get<Comments[]>(`${this.baseUrl}/select`)
 }
+
+public sendCommentFromRemote(comment: Comments):Observable<any>{
+  return this.http.post<any>(`${this.baseUrl}/save`, comment);
+}
 }

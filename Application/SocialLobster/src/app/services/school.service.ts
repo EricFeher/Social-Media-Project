@@ -15,4 +15,8 @@ export class SchoolService {
   public getAll(): Observable<any>{
     return this.http.get<School[]>(`${this.baseUrl}/select`)
 }
+
+public sendSchoolFromRemote(school: School):Observable<any>{
+  return this.http.post<any>(`${this.baseUrl}/save`, school);
+}
 }

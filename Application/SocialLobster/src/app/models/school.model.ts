@@ -1,8 +1,8 @@
 export class School {
     id:number;
-    locationid:number;
+    location_id:number;
     name:String;
-    schooltype:String;
+    school_type:String;
     
     constructor(){
     }

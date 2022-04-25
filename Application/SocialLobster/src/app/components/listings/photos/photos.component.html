@@ -1,4 +1,15 @@
 <div class="container">
+  <form #Photoform="ngForm" (ngSubmit)="sendPhoto()">
+    <mat-form-field>
+        <input matInput type="number" placeholder="UserId" name="userid" required [(ngModel)]="photo.user_id">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput type="text" placeholder="Photo" name="photo" required [(ngModel)]="photo.photo">
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary">Send data</button>
+</form>
     <table class="table table-bordered table-striped">
       <thead>
       <tr>

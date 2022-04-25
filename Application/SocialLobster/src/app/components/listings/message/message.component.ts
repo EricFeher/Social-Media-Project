@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Message } from 'src/app/models/message.model';
 import { MessageService } from 'src/app/services/message.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { MessageService } from 'src/app/services/message.service';
 export class MessageComponent implements OnInit {
 
  
- 
+  message = new Message();
   messages: any[];
   constructor(private messageService: MessageService) { }
 
@@ -26,4 +27,11 @@ export class MessageComponent implements OnInit {
       }
     );
   }
+
+  sendMessage(): void{
+    this.messageService.sendMessageFromRemote(this.message).subscribe(
+    )
+    window.location.reload();
+  }
+
 }

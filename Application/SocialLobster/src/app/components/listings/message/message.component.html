@@ -1,4 +1,19 @@
 <div class="container">
+  <form #Messageform="ngForm" (ngSubmit)="sendMessage()">
+    <mat-form-field>
+        <input matInput type="number" placeholder="Userid1" name="user_id1" required [(ngModel)]="message.user_id1">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput type="number" placeholder="Userid2" name="user_id2" required [(ngModel)]="message.user_id2">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput type="text" placeholder="Content" name="content" required [(ngModel)]="message.content">
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary">Send data</button>
+</form>
     <table class="table table-bordered table-striped">
       <thead>
       <tr>

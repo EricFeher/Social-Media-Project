@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserData } from 'src/app/models/userdata.model';
 import { UserdataService } from 'src/app/services/userdata.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { UserdataService } from 'src/app/services/userdata.service';
 })
 export class UserdataComponent implements OnInit {
 
- 
+  userdatas = new UserData();
   userdata: any[];
   constructor(private userdataService: UserdataService) { }
 
@@ -24,5 +25,11 @@ export class UserdataComponent implements OnInit {
         this.userdata = data;
       }
     );
+  }
+
+  sendUserdata(): void{
+    this.userdataService.sendUserdataFromRemote(this.userdatas).subscribe(
+    )
+    window.location.reload();
   }
 }

@@ -14,4 +14,9 @@ export class UserdataService {
   public getAll(): Observable<any>{
     return this.http.get<UserData[]>(`${this.baseUrl}/select`)
 }
+
+public sendUserdataFromRemote(userdata: UserData):Observable<any>{
+  return this.http.post<any>(`${this.baseUrl}/save`, userdata);
+}
+
 }

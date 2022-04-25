@@ -1,4 +1,19 @@
 <div class="container">
+  <form #Commentform="ngForm" (ngSubmit)="sendComment()">
+    <mat-form-field>
+        <input matInput type="number" placeholder="UserId" name="user_id" required [(ngModel)]="comment.user_id">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput type="number" placeholder="PostId" name="post_id" required [(ngModel)]="comment.post_id">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput type="text" placeholder="Content" name="content" required [(ngModel)]="comment.content">
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary">Send data</button>
+</form>
     <table class="table table-bordered table-striped">
       <thead>
       <tr>

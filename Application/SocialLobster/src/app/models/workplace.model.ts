@@ -1,8 +1,8 @@
 export class Workplace {
     id:number;
-    locationid:number;
+    location_id:number;
     name:String;
-    workplacetype:String;
+    workplace_type:String;
 
     
     constructor(){

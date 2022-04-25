@@ -1,7 +1,7 @@
 export class Post {
     id:number;
-    userid:number;
-    conent:String;
+    user_id:number;
+    content:String;
     creationtime:String;
 
     

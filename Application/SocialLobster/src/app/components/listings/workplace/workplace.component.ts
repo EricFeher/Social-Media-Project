@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Workplace } from 'src/app/models/workplace.model';
 import { WorkplaceService } from 'src/app/services/workplace.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { WorkplaceService } from 'src/app/services/workplace.service';
 export class WorkplaceComponent implements OnInit {
 
  
- 
+  workplaces = new Workplace();
   workplace: any[];
   constructor(private workplaceService: WorkplaceService) { }
 
@@ -26,4 +27,11 @@ export class WorkplaceComponent implements OnInit {
       }
     );
   }
+
+  sendWorkplace(): void{
+    this.workplaceService.sendWorkplaceFromRemote(this.workplaces).subscribe(
+    )
+    window.location.reload();
+  }
+
 }

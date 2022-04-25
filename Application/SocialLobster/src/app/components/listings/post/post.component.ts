@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Post } from 'src/app/models/post.model';
 import { PostService } from 'src/app/services/post.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class PostComponent implements OnInit {
 
- 
+  post = new Post();
   posts: any[];
   constructor(private postService: PostService) { }
 
@@ -25,5 +26,12 @@ export class PostComponent implements OnInit {
       }
     );
   }
+
+  sendPost(): void{
+    this.postService.sendPostFromRemote(this.post).subscribe(
+    )
+    window.location.reload();
+  }
+
 }
 
