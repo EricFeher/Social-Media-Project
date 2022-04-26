@@ -2,6 +2,7 @@ package com.example.sociallobster.Controller;
 
 
 import com.example.sociallobster.Model.Location;
+import com.example.sociallobster.Repository.LocationInsertRepository;
 import com.example.sociallobster.Repository.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,16 +18,17 @@ public class LocationController {
 
     @Autowired
     private LocationRepository locationRepository;
+    @Autowired
+    private LocationInsertRepository locationInsertRepository;
 
     @PostMapping("/save")
-    public ResponseEntity<String> SaveLocation(@RequestBody Location location){
+    public void SaveLocation(@RequestBody Location location) throws Exception {
         try{
-            locationRepository.save(location);
+            locationInsertRepository.insertWithQuery(location);
         }
         catch (Exception e){
-            return new ResponseEntity<String>("Not inserted", HttpStatus.INTERNAL_SERVER_ERROR);
+            throw new Exception("Sikertelen beillesztés!");
         }
-        return new ResponseEntity<String>("Successfully inserted", HttpStatus.OK);
     }
 
     @GetMapping("/select")

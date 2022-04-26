@@ -1,6 +1,7 @@
 package com.example.sociallobster.Controller;
 
 import com.example.sociallobster.Model.School;
+import com.example.sociallobster.Repository.SchoolInsertRepository;
 import com.example.sociallobster.Repository.SchoolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,16 +17,18 @@ public class SchoolController {
 
     @Autowired
     SchoolRepository schoolRepository;
+    @Autowired
+    SchoolInsertRepository schoolInsertRepository;
 
     @PostMapping("/save")
-    public ResponseEntity<String> SaveSchool(@RequestBody School school){
+    public void SaveSchool(@RequestBody School school) throws Exception {
         try{
-            schoolRepository.save(school);
+            schoolInsertRepository.insertWithQuery(school);
         }
         catch (Exception e){
-            return new ResponseEntity<String>("Not inserted", HttpStatus.INTERNAL_SERVER_ERROR);
+            throw new Exception("Sikertelen beillesztés!");
         }
-        return new ResponseEntity<String>("Successfully inserted", HttpStatus.OK);
+
     }
 
     @GetMapping("/select")

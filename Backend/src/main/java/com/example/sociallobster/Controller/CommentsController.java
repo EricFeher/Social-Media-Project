@@ -2,6 +2,7 @@ package com.example.sociallobster.Controller;
 
 
 import com.example.sociallobster.Model.Comments;
+import com.example.sociallobster.Repository.CommentsInsertRepository;
 import com.example.sociallobster.Repository.CommentsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,16 +18,17 @@ public class CommentsController {
 
     @Autowired
     CommentsRepository commentsRepository;
+    @Autowired
+    CommentsInsertRepository commentsInsertRepository;
 
     @PostMapping("/save")
-    public ResponseEntity<String> SaveComments(@RequestBody Comments comments){
+    public void SaveComments(@RequestBody Comments comments) throws Exception {
         try{
-            commentsRepository.save(comments);
+            commentsInsertRepository.insertWithQuery(comments);
         }
         catch (Exception e){
-            return new ResponseEntity<String>("Not inserted", HttpStatus.INTERNAL_SERVER_ERROR);
+           throw new Exception("Sikertelen beillesztés!");
         }
-        return new ResponseEntity<String>("Successfully inserted", HttpStatus.OK);
     }
 
     @GetMapping("/select")

@@ -1,6 +1,7 @@
 package com.example.sociallobster.Controller;
 
 import com.example.sociallobster.Model.Workplace;
+import com.example.sociallobster.Repository.WorkplaceInsertRepository;
 import com.example.sociallobster.Repository.WorkplaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,16 +16,17 @@ import java.util.Optional;
 public class WorkplaceController {
     @Autowired
     WorkplaceRepository workplaceRepository;
+    @Autowired
+    WorkplaceInsertRepository workplaceInsertRepository;
 
     @PostMapping("/save")
-    public ResponseEntity<String> SaveWorkplace(@RequestBody Workplace workplace){
+    public void SaveWorkplace(@RequestBody Workplace workplace) throws Exception {
         try{
-            workplaceRepository.save(workplace);
+            workplaceInsertRepository.insertWithQuery(workplace);
         }
         catch (Exception e){
-            return new ResponseEntity<String>("Not inserted", HttpStatus.INTERNAL_SERVER_ERROR);
+            throw new Exception("Sikertelen beillesztés!");
         }
-        return new ResponseEntity<String>("Successfully inserted", HttpStatus.OK);
     }
 
     @GetMapping("/select")

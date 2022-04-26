@@ -2,6 +2,7 @@ package com.example.sociallobster.Controller;
 
 
 import com.example.sociallobster.Model.Photos;
+import com.example.sociallobster.Repository.PhotosInsertRepository;
 import com.example.sociallobster.Repository.PhotosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,16 +18,17 @@ public class PhotosController {
 
     @Autowired
     private PhotosRepository photosRepository;
+    @Autowired
+    PhotosInsertRepository photosInsertRepository;
 
     @PostMapping("/save")
-    public ResponseEntity<String> SavePhotos(@RequestBody Photos photos){
+    public void SavePhotos(@RequestBody Photos photos) throws Exception {
         try{
-            photosRepository.save(photos);
+            photosInsertRepository.insertWithQuery(photos);
         }
         catch (Exception e){
-            return new ResponseEntity<String>("Not inserted", HttpStatus.INTERNAL_SERVER_ERROR);
+            throw new Exception("Sikertelen beillesztés!");
         }
-        return new ResponseEntity<String>("Successfully inserted", HttpStatus.OK);
     }
 
     @GetMapping("/select")

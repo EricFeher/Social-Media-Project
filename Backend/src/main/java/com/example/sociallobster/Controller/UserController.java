@@ -1,14 +1,14 @@
 package com.example.sociallobster.Controller;
 
+
 import com.example.sociallobster.Model.User;
+import com.example.sociallobster.Repository.UserInsertRepository;
 import com.example.sociallobster.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,16 +17,18 @@ import java.util.Optional;
 public class UserController {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    UserInsertRepository userInsertRepository;
+
 
     @PostMapping("/save")
-    public ResponseEntity<String> SaveUser(@RequestBody User user){
+    public void SaveUser(@RequestBody User user) throws Exception {
         try{
-            userRepository.save(user);
+            userInsertRepository.insertWithQuery(user);
         }
         catch (Exception e){
-            return new ResponseEntity<String>("Not inserted", HttpStatus.INTERNAL_SERVER_ERROR);
+            throw new Exception("Sikertelen beillesztés!");
         }
-        return new ResponseEntity<String>("Successfully inserted", HttpStatus.OK);
     }
 
     @GetMapping("/select")
