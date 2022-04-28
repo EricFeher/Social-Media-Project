@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Navbar2Component implements OnInit {
 
-  constructor() { }
+  loggedInUser=false;
 
+  constructor() { }
   ngOnInit(): void {
+  }
+
+  getUserLoggedIn(){
+    const user = JSON.parse(localStorage.getItem('user') as string);
+    if(user){
+      this.loggedInUser=true;
+    }
+    else{
+      localStorage.setItem('user', JSON.stringify(null));
+      this.loggedInUser=false;
+    }
   }
 
 }

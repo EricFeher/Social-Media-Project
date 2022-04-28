@@ -20,7 +20,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NavigationBarComponent } from './shared/menu/navigation-bar/navigation-bar.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -76,7 +75,6 @@ import { FormsModule } from '@angular/forms';
     GroupsComponent,
     ProfileComponent,
     ExploreComponent,
-    NavigationBarComponent,
     UserListComponent,
     AdminComponent,
     CommentsComponent,

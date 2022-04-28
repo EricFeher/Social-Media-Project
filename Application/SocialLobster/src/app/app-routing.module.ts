@@ -7,17 +7,24 @@ import { FeedComponent } from './pages/feed/feed.component';
 import { ExploreComponent } from './pages/explore/explore.component';
 import { UserListComponent } from './pages/components/user-list/user-list.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import {AuthGuard} from "./shared/services/auth.guard";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'navbar2', component: RegisterComponent},
-  {path: 'feed', component: FeedComponent},
-  {path: 'profile', component: ProfileComponent},
-  {path: 'explore', component: ExploreComponent},
-  {path: 'userlist', component: UserListComponent},
-  {path: 'admin', component: AdminComponent}
+  {path: 'feed', component: FeedComponent,
+    canActivate: [AuthGuard]},
+  {path: 'profile', component: ProfileComponent,
+    canActivate: [AuthGuard]},
+  {path: 'explore', component: ExploreComponent,
+    canActivate: [AuthGuard]},
+  {path: 'userlist', component: UserListComponent,
+    canActivate: [AuthGuard]},
+  {path: 'admin', component: AdminComponent,
+    canActivate: [AuthGuard]}
 ];
+
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -9,18 +9,24 @@
     </div>
     <div class="spacer"></div>
     <div>
-        <button mat-button routerLink="/admin" routerLinkActive="active">Admin</button>
+      <button mat-button routerLink="/login" routerLinkActive="active" *ngIf="!loggedInUser">Login</button>
     </div>
     <div>
-        <button mat-button routerLink="/explore" routerLinkActive="active">Explore</button>
+      <button mat-raised-button routerLink="/register" routerLinkActive="active" *ngIf="!loggedInUser">Register</button>
     </div>
     <div>
-        <button mat-button routerLink="/feed" routerLinkActive="active">Feed</button>
+        <button mat-button routerLink="/admin" routerLinkActive="active" *ngIf="loggedInUser">Admin</button>
     </div>
     <div>
-        <button mat-button routerLink="/profile" routerLinkActive="active">Profile</button>
+        <button mat-button routerLink="/explore" routerLinkActive="active" *ngIf="loggedInUser">Explore</button>
     </div>
     <div>
-        <button mat-button routerLink="/logout" routerLinkActive="active">Log out</button>
+        <button mat-button routerLink="/feed" routerLinkActive="active" *ngIf="loggedInUser">Feed</button>
+    </div>
+    <div>
+        <button mat-button routerLink="/profile" routerLinkActive="active" *ngIf="loggedInUser">Profile</button>
+    </div>
+    <div>
+        <button mat-button routerLink="/logout" routerLinkActive="active" *ngIf="loggedInUser">Log out</button>
     </div>
 </mat-toolbar>
