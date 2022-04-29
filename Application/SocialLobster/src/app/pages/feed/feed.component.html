@@ -1,8 +1,9 @@
 <app-navbar2></app-navbar2>
-<mat-card class="card"  *ngFor="let post of posts">
-    <mat-card-header  *ngFor="let user of users">
+<div *ngFor="let post of posts; index as i">
+<mat-card class="card">
+    <mat-card-header>
       <div mat-card-avatar class="header-image"></div>
-      <mat-card-title>user.username</mat-card-title>
+      <mat-card-title >{{users[i].username}}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <br>
@@ -13,3 +14,4 @@
       <button mat-button>SHARE</button>
     </mat-card-actions>
 </mat-card>
+</div>

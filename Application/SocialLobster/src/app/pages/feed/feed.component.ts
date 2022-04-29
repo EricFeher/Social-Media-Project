@@ -10,16 +10,20 @@ import { UserService } from '../../shared/services/user.service';
   styleUrls: ['./feed.component.scss']
 })
 export class FeedComponent implements OnInit {
-  users: User[]
+  users: Array<User> = []
   posts: Post[]
+  size: any
+  
   constructor(private userService: UserService, private postService: PostService) { }
 
   ngOnInit(): void {
     this.getAllPost();
+    let size = this.posts.length;
   }
 
   getAllPost(){
-    this.postService.getAll().subscribe(data => {
+   const items = this.postService.getAll().subscribe(data => {
+    items.unsubscribe();
       this.posts = data;
       this.getUsersById();
     }, error => {
