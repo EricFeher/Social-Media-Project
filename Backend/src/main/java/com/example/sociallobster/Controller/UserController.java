@@ -41,6 +41,18 @@ public class UserController {
         }
         return new ResponseEntity<List<User>>(list, HttpStatus.OK);
     }
+
+    @GetMapping("/select/{id}")
+    public ResponseEntity<User> selectUserById(@PathVariable("id") Integer id) {
+        User user = new User();
+        try {
+            user = userRepository.findById(id).get();
+            return new ResponseEntity<User>(user, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<User>(user, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable("id") Integer id){
         try{

@@ -1,20 +1,15 @@
+<app-navbar2></app-navbar2>
   <mat-tab-group>
     <mat-tab label="Groups">
-        <mat-list>
-            <mat-list-item>Group1</mat-list-item>
+        <mat-list *ngFor="let group of groups">
+            <mat-list-item>{{group.name}}</mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item>Group2</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Group3</mat-list-item>
           </mat-list>
     </mat-tab>
     <mat-tab label="People">
-        <mat-list>
-            <mat-list-item>Person1</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Person2</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Person3</mat-list-item>
+        <mat-list *ngFor="let user of users">
+            <mat-list-item>{{user.username}}</mat-list-item>
+            <mat-divider></mat-divider>     
           </mat-list>
     </mat-tab>
   </mat-tab-group>

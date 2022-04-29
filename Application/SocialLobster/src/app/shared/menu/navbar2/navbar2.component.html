@@ -15,7 +15,7 @@
       <button mat-raised-button routerLink="/register" routerLinkActive="active" *ngIf="!loggedInUser">Register</button>
     </div>
     <div>
-        <button mat-button routerLink="/admin" routerLinkActive="active" *ngIf="loggedInUser">Admin</button>
+        <button mat-button routerLink="/admin" routerLinkActive="active" *ngIf="loggedInUser && admin">Admin</button>
     </div>
     <div>
         <button mat-button routerLink="/explore" routerLinkActive="active" *ngIf="loggedInUser">Explore</button>
@@ -27,6 +27,6 @@
         <button mat-button routerLink="/profile" routerLinkActive="active" *ngIf="loggedInUser">Profile</button>
     </div>
     <div>
-        <button mat-button routerLink="/logout" routerLinkActive="active" *ngIf="loggedInUser">Log out</button>
+        <button mat-button routerLink="/login" (click)="logout()" routerLinkActive="active" *ngIf="loggedInUser">Log out</button>
     </div>
 </mat-toolbar>

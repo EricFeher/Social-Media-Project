@@ -19,4 +19,8 @@ public sendUserFromRemote(user: User):Observable<any>{
   return this.http.post<any>(`${this.baseUrl}/save`, user);
 }
 
+public getOneById(id: number): Observable<any>{
+  return this.http.get<User>(`${this.baseUrl}/select/${id}`)
+}
+
 }

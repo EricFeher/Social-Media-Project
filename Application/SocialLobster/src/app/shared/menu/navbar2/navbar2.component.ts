@@ -8,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class Navbar2Component implements OnInit {
 
   loggedInUser=false;
+  admin=false;
 
   constructor() { }
   ngOnInit(): void {
+    this.getUserLoggedIn();
+    this.isAdmin();
   }
+  
 
   getUserLoggedIn(){
     const user = JSON.parse(localStorage.getItem('user') as string);
@@ -22,6 +26,23 @@ export class Navbar2Component implements OnInit {
       localStorage.setItem('user', JSON.stringify(null));
       this.loggedInUser=false;
     }
+  }
+
+  isAdmin() {
+    const user = JSON.parse(localStorage.getItem('user') as string);
+    console.log(user.email);
+    
+    if(user.email == "attila@gmail.com"){
+      this.admin=true;
+    }
+    else{
+      this.admin=false;
+    }
+  }
+
+  logout() {
+    localStorage.setItem('user', JSON.stringify(null));
+    this.ngOnInit();
   }
 
 }
