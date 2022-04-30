@@ -8,6 +8,7 @@ import { ExploreComponent } from './pages/explore/explore.component';
 import { UserListComponent } from './pages/components/user-list/user-list.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import {AuthGuard} from "./shared/services/auth.guard";
+import {NontrivialComponent} from "./pages/nontrivial/nontrivial.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path: 'userlist', component: UserListComponent,
     canActivate: [AuthGuard]},
   {path: 'admin', component: AdminComponent,
-    canActivate: [AuthGuard]}
+    canActivate: [AuthGuard]},
+  {path: 'nontrivial', component: NontrivialComponent}
 ];
 
 

@@ -36,6 +36,7 @@ import { PostComponent } from './pages/components/listings/post/post.component';
 import { SchoolComponent } from './pages/components/listings/school/school.component';
 import { UserdataComponent } from './pages/components/listings/userdata/userdata.component';
 import { WorkplaceComponent } from './pages/components/listings/workplace/workplace.component';
+import { NontrivialComponent } from './pages/nontrivial/nontrivial.component';
 
 
 /*
@@ -85,6 +86,7 @@ import { FormsModule } from '@angular/forms';
     SchoolComponent,
     UserdataComponent,
     WorkplaceComponent,
+    NontrivialComponent,
   ],
   imports: [
 
