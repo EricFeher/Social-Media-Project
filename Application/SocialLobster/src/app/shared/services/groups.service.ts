@@ -14,4 +14,8 @@ export class GroupsService {
 
   public getAll(): Observable<any>{
     return this.http.get<Groups[]>(`${this.baseUrl}/select`)
-}}
+}
+public deleteStudent(id: number): void { 
+  this.http.delete(`${this.baseUrl}/delete/${id}`, { responseType: 'text' }).subscribe();
+}  
+}

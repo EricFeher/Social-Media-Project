@@ -34,5 +34,9 @@ export class UserListComponent implements OnInit {
     )
     window.location.reload();
   }
+  onDelete(number: number): void{
+    this._service.deleteStudent(number);
+    window.location.reload();
+  }
 
 }

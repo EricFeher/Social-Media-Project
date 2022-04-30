@@ -22,5 +22,7 @@ public sendUserFromRemote(user: User):Observable<any>{
 public getOneById(id: number): Observable<any>{
   return this.http.get<User>(`${this.baseUrl}/select/${id}`)
 }
-
+public deleteStudent(id: number): void { 
+  this.http.delete(`${this.baseUrl}/delete/${id}`, { responseType: 'text' }).subscribe();
+}  
 }

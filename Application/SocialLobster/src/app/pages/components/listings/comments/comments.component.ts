@@ -33,5 +33,10 @@ export class CommentsComponent implements OnInit {
     window.location.reload();
   }
 
+  onDelete(number: number): void{
+    this.commentService.deleteStudent(number);
+    window.location.reload();
+  }
+
 
 }

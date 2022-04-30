@@ -33,5 +33,9 @@ export class MessageComponent implements OnInit {
     )
     window.location.reload();
   }
+  onDelete(number: number): void{
+    this.messageService.deleteStudent(number);
+    window.location.reload();
+  }
 
 }

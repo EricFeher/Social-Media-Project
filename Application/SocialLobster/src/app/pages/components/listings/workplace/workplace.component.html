@@ -29,6 +29,7 @@
         <td><span>{{user.location_id}}</span></td>
         <td><span>{{user.name}}</span></td>
         <td><span>{{user.workplace_type}}</span></td>
+        <td><button mat-button (click)="onDelete(user.id)">Delete</button></td>
       </tr>
       </tbody>
     </table>

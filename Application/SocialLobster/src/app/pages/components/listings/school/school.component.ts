@@ -33,5 +33,9 @@ export class SchoolComponent implements OnInit {
     )
     window.location.reload();
   }
+  onDelete(number: number): void{
+    this.schoolService.deleteStudent(number);
+    window.location.reload();
+  }
 
 }

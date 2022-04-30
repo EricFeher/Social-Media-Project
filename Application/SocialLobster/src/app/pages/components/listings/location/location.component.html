@@ -34,6 +34,7 @@
         <td><span>{{user.city}}</span></td>
         <td><span>{{user.street}}</span></td>
         <td><span>{{user.housenumber}}</span></td>
+        <td><button mat-button (click)="onDelete(user.id)">Delete</button></td>
       </tr>
       </tbody>
     </table>

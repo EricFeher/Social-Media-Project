@@ -54,6 +54,7 @@
         <td><span>{{user.last_name}}</span></td>
         <td><span>{{user.gender}}</span></td>
         <td><span>{{user.birthday}}</span></td>
+        <td><button mat-button (click)="onDelete(user.id)">Delete</button></td>
       </tr>
       </tbody>
     </table>

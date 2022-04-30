@@ -33,5 +33,9 @@ export class LocationComponent implements OnInit {
     )
   window.location.reload();
   }
+  onDelete(number: number): void{
+    this.locationService.deleteStudent(number);
+    window.location.reload();
+  }
 
 }

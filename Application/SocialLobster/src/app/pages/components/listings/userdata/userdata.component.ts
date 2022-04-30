@@ -32,4 +32,9 @@ export class UserdataComponent implements OnInit {
     )
     window.location.reload();
   }
+  onDelete(number: number): void{
+    this.userdataService.deleteStudent(number);
+    window.location.reload();
+  }
+
 }

@@ -32,6 +32,10 @@ export class PostComponent implements OnInit {
     )
     window.location.reload();
   }
+  onDelete(number: number): void{
+    this.postService.deleteStudent(number);
+    window.location.reload();
+  }
 
 }
 

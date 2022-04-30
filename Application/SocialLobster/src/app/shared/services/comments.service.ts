@@ -19,4 +19,13 @@ export class CommentsService {
 public sendCommentFromRemote(comment: Comments):Observable<any>{
   return this.http.post<any>(`${this.baseUrl}/save`, comment);
 }
+
+
+
+public deleteStudent(id: number): void { 
+  console.log(id);
+  console.log(`${this.baseUrl}/delete/${id}`);
+  this.http.delete(`${this.baseUrl}/delete/${id}`, { responseType: 'text' }).subscribe();  
+}  
+
 }

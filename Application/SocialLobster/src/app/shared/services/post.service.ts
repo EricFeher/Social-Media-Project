@@ -19,5 +19,7 @@ export class PostService {
 public sendPostFromRemote(post: Post):Observable<any>{
   return this.http.post<any>(`${this.baseUrl}/save`, post);
 }
-
+public deleteStudent(id: number): void { 
+  this.http.delete(`${this.baseUrl}/delete/${id}`, { responseType: 'text' }).subscribe();
+}  
 }

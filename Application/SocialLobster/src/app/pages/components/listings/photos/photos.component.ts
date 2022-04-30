@@ -34,5 +34,9 @@ export class PhotosComponent implements OnInit {
     )
     window.location.reload();
   }
+  onDelete(number: number): void{
+    this.photoService.deleteStudent(number);
+    window.location.reload();
+  }
 
 }

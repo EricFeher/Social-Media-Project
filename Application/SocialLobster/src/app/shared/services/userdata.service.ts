@@ -18,5 +18,7 @@ export class UserdataService {
 public sendUserdataFromRemote(userdata: UserData):Observable<any>{
   return this.http.post<any>(`${this.baseUrl}/save`, userdata);
 }
-
+public deleteStudent(id: number): void { 
+  this.http.delete(`${this.baseUrl}/delete/${id}`, { responseType: 'text' }).subscribe();
+}  
 }

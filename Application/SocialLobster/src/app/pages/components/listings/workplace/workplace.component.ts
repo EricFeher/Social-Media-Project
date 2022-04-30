@@ -33,5 +33,9 @@ export class WorkplaceComponent implements OnInit {
     )
     window.location.reload();
   }
+  onDelete(number: number): void{
+    this.workplaceService.deleteStudent(number);
+    window.location.reload();
+  }
 
 }

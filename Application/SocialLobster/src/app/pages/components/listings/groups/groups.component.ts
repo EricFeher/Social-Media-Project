@@ -24,4 +24,9 @@ export class GroupsComponent implements OnInit {
       }
     );
   }
+  onDelete(number: number): void{
+    this.groupService.deleteStudent(number);
+    window.location.reload();
+  }
+
 }
