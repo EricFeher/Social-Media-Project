@@ -5,12 +5,12 @@
       <mat-card-title>{{user.username}}</mat-card-title>
       <mat-card-subtitle>{{user.email}}</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content>
-      <p>
-        Intro: dog
-      </p>
-      <p>
-          Phone number: Nope :(
-      </p>
+    <mat-card-content *ngIf="isUserData">
+      <p>Location_id: {{userDatas[0].location_id}}</p>
+      <p>Photo_id: {{userDatas[0].photo_id}}</p>
+      <p>First Name: {{userDatas[0].first_name}}</p>
+      <p>Last Name: {{userDatas[0].last_name}}</p>
+      <p>Gender: {{userDatas[0].gender}}</p>
+      <p>Birthday: {{userDatas[0].birthday}}</p>
     </mat-card-content>
   </mat-card>
