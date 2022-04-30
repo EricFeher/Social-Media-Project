@@ -1,12 +1,12 @@
 package com.example.sociallobster.Repository;
 
-import com.example.sociallobster.Model.Photos;
 import com.example.sociallobster.Model.UserData;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Repository
 public class UserDataInsertRepository {
@@ -25,4 +25,13 @@ public class UserDataInsertRepository {
                 .setParameter(7, userData.getBirthday())
                 .executeUpdate();
     }
+
+    public List<UserData> getUsersWhereFollower(){
+        return entityManager.createNativeQuery("SELECT * FROM USERDATA WHERE user_id IN (SELECT user_id2 FROM FOLLOWS GROUP BY user_id2 HAVING COUNT(user_id1) >= 3)", UserData.class)
+                .getResultList();
+    }
+
+
+
+
 }

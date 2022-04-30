@@ -1,12 +1,16 @@
 package com.example.sociallobster.Controller;
 
 import com.example.sociallobster.Model.Follows;
+import com.example.sociallobster.Model.UserData;
+import com.example.sociallobster.Repository.FollowsInsertRepository;
 import com.example.sociallobster.Repository.FollowsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,16 +20,42 @@ public class FollowsController {
 
     @Autowired
     FollowsRepository followsRepository;
+    @Autowired
+    FollowsInsertRepository followsInsertRepository;
+
 
     @PostMapping("/save")
-    public ResponseEntity<String> SaveFollows(@RequestBody Follows follows){
+    public void SaveFollows(@RequestBody Follows follows) throws Exception{
         try{
-            followsRepository.save(follows);
+            followsInsertRepository.insertWithQuery(follows);
         }
         catch (Exception e){
-            return new ResponseEntity<String>("Not inserted", HttpStatus.INTERNAL_SERVER_ERROR);
+            throw new Exception("Sikertelen beillesztés!");
         }
-        return new ResponseEntity<String>("Successfully inserted", HttpStatus.OK);
+    }
+
+    @GetMapping("/getFollowsByUserId1/{id}")
+    public ResponseEntity<List<BigDecimal>> getFollowsByUserId1(@PathVariable("id") Integer id) {
+        List<BigDecimal> db = new ArrayList<>();
+        try {
+           db = followsInsertRepository.getFollowsByUserId1(id);
+            return new ResponseEntity<List<BigDecimal>>(db, HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity<List<BigDecimal>>(db, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+
+    @GetMapping("/getFollowsByUserId2/{id}")
+    public ResponseEntity<List<BigDecimal>> getFollowsByUserId2(@PathVariable("id") Integer id) {
+        List<BigDecimal> db = new ArrayList<>();
+        try {
+            db = followsInsertRepository.getFollowsByUserId2(id);
+            return new ResponseEntity<List<BigDecimal>>(db, HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity<List<BigDecimal>>(db, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
     }
 
     @GetMapping("/select")

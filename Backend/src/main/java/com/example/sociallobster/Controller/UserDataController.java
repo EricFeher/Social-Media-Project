@@ -41,6 +41,18 @@ public class UserDataController {
         }
         return new ResponseEntity<List<UserData>>(list, HttpStatus.OK);
     }
+
+    @GetMapping("/selectUsersWhereFollower")
+    public ResponseEntity<List<UserData>> getUserDataWithQuery() {
+        List<UserData> list = null;
+        try {
+            list = userDataInsertRepository.getUsersWhereFollower();
+        } catch (Exception e){
+            return new ResponseEntity<List<UserData>>(list, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<List<UserData>>(list, HttpStatus.OK);
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteUserData(@PathVariable("id") Integer id){
         try{
