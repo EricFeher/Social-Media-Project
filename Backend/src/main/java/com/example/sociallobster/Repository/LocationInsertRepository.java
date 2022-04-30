@@ -22,4 +22,5 @@ public class LocationInsertRepository {
                 .setParameter(4, location.getHousenumber())
                 .executeUpdate();
     }
+
 }
