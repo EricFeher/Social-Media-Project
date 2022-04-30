@@ -1,6 +1,7 @@
 package com.example.sociallobster.Controller;
 
 
+import com.example.sociallobster.Model.User;
 import com.example.sociallobster.Model.UserData;
 import com.example.sociallobster.Repository.UserDataInsertRepository;
 import com.example.sociallobster.Repository.UserDataRepository;
@@ -9,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,6 +53,17 @@ public class UserDataController {
             return new ResponseEntity<List<UserData>>(list, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<List<UserData>>(list, HttpStatus.OK);
+    }
+
+    @GetMapping("/getUserDataForUser/{id}")
+    public ResponseEntity<List<UserData>> getUserDataForUser(@PathVariable("id") Integer id) {
+        List<UserData> userData = new ArrayList<>();
+        try {
+            userData = userDataInsertRepository.getUserDataForUser(id);
+            return new ResponseEntity<List<UserData>>(userData, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<List<UserData>>(userData, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @DeleteMapping("/delete/{id}")

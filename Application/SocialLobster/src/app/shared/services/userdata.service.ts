@@ -21,4 +21,9 @@ public sendUserdataFromRemote(userdata: UserData):Observable<any>{
 public deleteStudent(id: number): void { 
   this.http.delete(`${this.baseUrl}/delete/${id}`, { responseType: 'text' }).subscribe();
 }  
+
+public getOneByUserId(id: number): Observable<any>{
+  return this.http.get<UserData[]>(`${this.baseUrl}/getUserDataForUser/${id}`)
+}
+
 }

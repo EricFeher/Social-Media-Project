@@ -31,6 +31,12 @@ public class UserDataInsertRepository {
                 .getResultList();
     }
 
+    public List getUserDataForUser(int id){
+        return entityManager.createNativeQuery("SELECT * FROM USERDATA INNER JOIN ENDUSER ON enduser.id=userdata.user_id WHERE enduser.id=?", UserData.class)
+                .setParameter(1, id)
+                .getResultList();
+    }
+
 
 
 
