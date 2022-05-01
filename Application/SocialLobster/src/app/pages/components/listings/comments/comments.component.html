@@ -36,3 +36,41 @@
       </tbody>
     </table>
   </div>
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form [formGroup]="userupdateform" #updusr (ngSubmit)="changeisUpdate()">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title" style="text-align: center">Update Comment</h4>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body" >
+              <input type="hidden" class="form-control"  formControlName="id" [(ngModel)]="user2.id">
+              <div class="form-group">
+                <label>userid</label>
+                <input type="text" class="form-control"  formControlName="username" [(ngModel)]="user2.user_id"  >
+              </div>
+              <div class="form-group">
+                <label>postid</label>
+                <input type="text" class="form-control" formControlName="email" [(ngModel)]="user2.post_id">
+              </div>
+              <div class="form-group">
+                <label>content</label>
+                <input type="text" class="form-control" formControlName="email" [(ngModel)]="user2.content">
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input type="hidden" class="form-control" formControlName="password" [(ngModel)]="user2.creation_time">
+              </div>
+  
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer" >
+            <button type="submit" class="btn btn-success">Update</button>
+          </div>
+  
+        </form>
+      </div>
+    </div>
+  </div>
