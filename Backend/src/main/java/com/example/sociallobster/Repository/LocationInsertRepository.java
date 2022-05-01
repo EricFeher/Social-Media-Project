@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Repository
 public class LocationInsertRepository {
@@ -21,6 +22,11 @@ public class LocationInsertRepository {
                 .setParameter(3, location.getStreet())
                 .setParameter(4, location.getHousenumber())
                 .executeUpdate();
+    }
+
+    public List getLocationForSchool(){
+        return entityManager.createNativeQuery(" SELECT * FROM LOCATION WHERE LOCATION.ID IN (SELECT LOCATION_ID FROM SCHOOL WHERE NAME='Bayer Inc')")
+                .getResultList();
     }
 
 }

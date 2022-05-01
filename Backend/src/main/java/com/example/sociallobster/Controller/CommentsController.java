@@ -56,13 +56,13 @@ public class CommentsController {
     }
 
     @GetMapping("/getUserForComment/{id}")
-    public ResponseEntity<List> getUserForComment(@PathVariable("id") Integer id) {
-        List list = new ArrayList();
+    public ResponseEntity<List<User>> getUserForComment(@PathVariable("id") Integer id) {
+        List<User> list = new ArrayList<>();
         try {
             list = commentsInsertRepository.getUserForComment(id);
-            return new ResponseEntity<List>(list, HttpStatus.OK);
+            return new ResponseEntity<List<User>>(list, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<List>(list, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<List<User>>(list, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

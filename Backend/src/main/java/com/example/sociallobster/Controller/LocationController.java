@@ -41,6 +41,18 @@ public class LocationController {
         }
         return new ResponseEntity<List<Location>>(list, HttpStatus.OK);
     }
+
+    @GetMapping("/getLocationForSchool")
+    public ResponseEntity<List<Location>> getLocationForSchool() {
+        List<Location> list = null;
+        try {
+            list = locationInsertRepository.getLocationForSchool();
+        } catch (Exception e) {
+            return new ResponseEntity<List<Location>>(list, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<List<Location>>(list, HttpStatus.OK);
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteLocation(@PathVariable("id") Integer id){
         try{

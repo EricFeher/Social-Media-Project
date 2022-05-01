@@ -30,7 +30,7 @@ public class CommentsInsertRepository {
     }
 
     public List getUserForComment(int id ) {
-        return entityManager.createNativeQuery("SELECT * FROM ENDUSER INNER JOIN COMMENTS ON comments.user_id=ENDUSER.id WHERE comments.user_id=?")
+        return entityManager.createNativeQuery("SELECT * FROM ENDUSER INNER JOIN COMMENTS ON comments.user_id=ENDUSER.id WHERE comments.user_id=?", User.class)
                 .setParameter(1, id)
                 .getResultList();
     }

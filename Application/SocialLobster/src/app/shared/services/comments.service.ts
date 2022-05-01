@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Comments } from '../models/comments.model';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,14 @@ public deleteStudent(id: number): void {
 
 public updateComment(comment: Comments){
   this.http.post<any>(`${this.baseUrl}/update/${comment.id}`, comment).subscribe();
+}
+
+public selectComments(id: number){
+  this.http.get<any>(`${this.baseUrl}/getCommentsFromPost/${id}`)
+}
+
+public selectUserForComments(id: number){
+  this.http.get<User[]>(`${this.baseUrl}/getUserForComment/${id}`)
 }
 
 }

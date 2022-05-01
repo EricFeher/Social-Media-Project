@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Comments } from 'src/app/shared/models/comments.model';
 import { Post } from 'src/app/shared/models/post.model';
 import { User } from 'src/app/shared/models/user.model';
+import { CommentsService } from 'src/app/shared/services/comments.service';
 import { PostService } from 'src/app/shared/services/post.service';
 import { UserService } from '../../shared/services/user.service';
 
@@ -12,9 +14,11 @@ import { UserService } from '../../shared/services/user.service';
 export class FeedComponent implements OnInit {
   users: Array<User> = []
   posts: Post[]
+  array: []
+  user: Array<User> = []
   size: any
   
-  constructor(private userService: UserService, private postService: PostService) { }
+  constructor(private userService: UserService, private postService: PostService, private commentService: CommentsService) { }
 
   ngOnInit(): void {
     this.getAllPost();
@@ -41,5 +45,21 @@ export class FeedComponent implements OnInit {
       });
     }
   }
+
+  /*getComments(id: number) {
+    this.commentService.selectComments(id).subscribe(data => {
+      this.array = data;
+    }, error =>{
+      console.log("Error");
+    })
+  }
+
+  getCommentsUser(id: number) {
+    this.commentService.selectUserForComments(id).subscribe(data => {
+      this.user = data;
+    }, error => {
+      console.log("Error");
+    })
+  }*/
 
 }
