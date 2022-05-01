@@ -37,7 +37,8 @@
       </tr>
       </tbody>
     </table>
-  </div>
+  
+</div>
 <div class="modal" id="myModal">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -48,18 +49,18 @@
         </div>
         <!-- Modal body -->
         <div class="modal-body" >
-            <input type="hidden" class="form-control"  formControlName="student_id" [(ngModel)]="user.id">
+            <input type="hidden" class="form-control"  formControlName="id" [(ngModel)]="user2.id">
             <div class="form-group">
               <label>Username</label>
-              <input type="text" class="form-control"  formControlName="student_name" [(ngModel)]="user.username"  >
+              <input type="text" class="form-control"  formControlName="username" [(ngModel)]="user2.username"  >
             </div>
             <div class="form-group">
               <label>Email</label>
-              <input type="text" class="form-control" formControlName="student_email" [(ngModel)]="user.email">
+              <input type="text" class="form-control" formControlName="email" [(ngModel)]="user2.email">
             </div>
             <div class="form-group">
               <label>Password</label>
-              <input type="password" class="form-control" formControlName="student_email" [(ngModel)]="user.password">
+              <input type="password" class="form-control" formControlName="password" [(ngModel)]="user2.password">
             </div>
 
         </div>

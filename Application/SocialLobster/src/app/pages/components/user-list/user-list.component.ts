@@ -12,9 +12,11 @@ import {FormControl, FormGroup} from "@angular/forms";
 export class UserListComponent implements OnInit {
   users: any[];
   user = new User();
+  user2 = new User();
   msg='';
 
   userupdateform=new FormGroup({
+    id:new FormControl(),
     username:new FormControl(),
     password:new FormControl(),
     email:new FormControl()
@@ -49,15 +51,16 @@ export class UserListComponent implements OnInit {
 
 
   changeisUpdate() {
-    this.user=new User();
-    this.user.username=this.userupdateform.get('username')?.value
-    this.user.email=this.userupdateform.get('email')?.value
-    this.user.id=this.userupdateform.get('id')?.value
-    this.user.password=this.userupdateform.get('password')?.value
-    this._service.updateStudent(this.user);
+    this.user2=new User();
+    this.user2.username=this.userupdateform.get('username')?.value
+    this.user2.email=this.userupdateform.get('email')?.value
+    this.user2.id=this.userupdateform.get('id')?.value
+    this.user2.password=this.userupdateform.get('password')?.value
+    this._service.updateStudent(this.user2);
+    console.log("lefute")
   }
 
   updateUser(user: User) {
-    this.user=user;
+    this.user2=user;
   }
 }
