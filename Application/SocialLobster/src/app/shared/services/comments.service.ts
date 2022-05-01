@@ -22,10 +22,14 @@ public sendCommentFromRemote(comment: Comments):Observable<any>{
 
 
 
-public deleteStudent(id: number): void { 
+public deleteStudent(id: number): void {
   console.log(id);
   console.log(`${this.baseUrl}/delete/${id}`);
-  this.http.delete(`${this.baseUrl}/delete/${id}`, { responseType: 'text' }).subscribe();  
-}  
+  this.http.delete(`${this.baseUrl}/delete/${id}`, { responseType: 'text' }).subscribe();
+}
+
+public updateComment(comment: Comments){
+  this.http.post<any>(`${this.baseUrl}/update/${comment.id}`, comment).subscribe();
+}
 
 }
