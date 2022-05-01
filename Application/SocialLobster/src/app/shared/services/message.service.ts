@@ -18,7 +18,11 @@ export class MessageService {
 public sendMessageFromRemote(message: Message):Observable<any>{
   return this.http.post<any>(`${this.baseUrl}/save`, message);
 }
-public deleteStudent(id: number): void { 
+public deleteStudent(id: number): void {
   this.http.delete(`${this.baseUrl}/delete/${id}`, { responseType: 'text' }).subscribe();
-}  
+}
+
+  updateMessage(message: Message) {
+    this.http.post<any>(`${this.baseUrl}/update/${message.id}`, message).subscribe();
+  }
 }

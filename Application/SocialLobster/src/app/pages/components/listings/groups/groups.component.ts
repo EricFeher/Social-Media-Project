@@ -29,4 +29,6 @@ export class GroupsComponent implements OnInit {
     window.location.reload();
   }
 
+
+
 }

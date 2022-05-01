@@ -20,7 +20,11 @@ public sendPhotoFromRemote(photo: Photos):Observable<any>{
   return this.http.post<any>(`${this.baseUrl}/save`, photo);
 }
 
-public deleteStudent(id: number): void { 
+public deleteStudent(id: number): void {
   this.http.delete(`${this.baseUrl}/delete/${id}`, { responseType: 'text' }).subscribe();
-}  
+}
+
+  updatePhoto(photo: Photos) {
+    this.http.post<any>(`${this.baseUrl}/update/${photo.id}`, photo).subscribe();
+  }
 }

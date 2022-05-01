@@ -19,7 +19,11 @@ export class LocationService {
   public sendLocationFromRemote(location: Location):Observable<any>{
   return this.http.post<any>(`${this.baseUrl}/save`, location);
 }
-public deleteStudent(id: number): void { 
+public deleteStudent(id: number): void {
   this.http.delete(`${this.baseUrl}/delete/${id}`, { responseType: 'text' }).subscribe();
-}  
+}
+
+  updateLocation(location: Location) {
+    this.http.post<any>(`${this.baseUrl}/update/${location.id}`, location).subscribe();
+  }
 }

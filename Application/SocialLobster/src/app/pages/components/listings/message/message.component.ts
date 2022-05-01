@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Message } from 'src/app/shared/models/message.model';
 import { MessageService } from 'src/app/shared/services/message.service';
+import {Comments} from "../../../../shared/models/comments.model";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-message-list',
@@ -38,4 +40,30 @@ export class MessageComponent implements OnInit {
     window.location.reload();
   }
 
+
+  user2 = new Message();
+
+  userupdateform=new FormGroup({
+    id:new FormControl(),
+    user_id:new FormControl(),
+    post_id:new FormControl(),
+    creation_time:new FormControl(),
+    content:new FormControl()
+  });
+
+
+  changeisUpdate() {
+    this.user2=new Message();
+    this.user2.id=this.userupdateform.get('id')?.value
+    this.user2.user_id1=this.userupdateform.get('user_id1')?.value
+    this.user2.user_id2=this.userupdateform.get('user_id2')?.value
+    this.user2.content=this.userupdateform.get('content')?.value
+    this.user2.creationtime=this.userupdateform.get('creationtime')?.value
+    this.messageService.updateMessage(this.user2);
+    console.log("lefute")
+  }
+
+  updateUser(user: Message) {
+    this.user2=user;
+  }
 }

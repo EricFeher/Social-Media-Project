@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/shared/models/post.model';
 import { PostService } from 'src/app/shared/services/post.service';
+import {Comments} from "../../../../shared/models/comments.model";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-post-list',
@@ -37,5 +39,30 @@ export class PostComponent implements OnInit {
     window.location.reload();
   }
 
+
+
+  user2 = new Post();
+
+  userupdateform=new FormGroup({
+    id:new FormControl(),
+    user_id:new FormControl(),
+    creation_time:new FormControl(),
+    content:new FormControl()
+  });
+
+
+  changeisUpdate() {
+    this.user2=new Post();
+    this.user2.id=this.userupdateform.get('id')?.value
+    this.user2.user_id=this.userupdateform.get('user_id')?.value
+    this.user2.creationtime=this.userupdateform.get('creation_time')?.value
+    this.user2.content=this.userupdateform.get('content')?.value
+    this.postService.updatePost(this.user2);
+    console.log("lefute")
+  }
+
+  updateUser(user: Post) {
+    this.user2=user;
+  }
 }
 

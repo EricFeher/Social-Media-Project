@@ -19,7 +19,11 @@ export class WorkplaceService {
 public sendWorkplaceFromRemote(workplace: Workplace):Observable<any>{
   return this.http.post<any>(`${this.baseUrl}/save`, workplace);
 }
-public deleteStudent(id: number): void { 
+public deleteStudent(id: number): void {
   this.http.delete(`${this.baseUrl}/delete/${id}`, { responseType: 'text' }).subscribe();
-}  
+}
+
+  updateWorkplace(workplace: Workplace) {
+    this.http.post<any>(`${this.baseUrl}/update/${workplace.id}`, workplace).subscribe();
+  }
 }
