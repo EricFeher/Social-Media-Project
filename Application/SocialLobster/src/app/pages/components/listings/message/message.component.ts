@@ -45,8 +45,8 @@ export class MessageComponent implements OnInit {
 
   userupdateform=new FormGroup({
     id:new FormControl(),
-    user_id:new FormControl(),
-    post_id:new FormControl(),
+    user_id1:new FormControl(),
+    user_id2:new FormControl(),
     creation_time:new FormControl(),
     content:new FormControl()
   });
@@ -58,7 +58,7 @@ export class MessageComponent implements OnInit {
     this.user2.user_id1=this.userupdateform.get('user_id1')?.value
     this.user2.user_id2=this.userupdateform.get('user_id2')?.value
     this.user2.content=this.userupdateform.get('content')?.value
-    this.user2.creationtime=this.userupdateform.get('creationtime')?.value
+    this.user2.creationtime=this.userupdateform.get('creation_time')?.value
     this.messageService.updateMessage(this.user2);
     console.log("lefute")
   }

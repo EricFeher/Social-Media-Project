@@ -58,7 +58,6 @@ export class PostComponent implements OnInit {
     this.user2.creationtime=this.userupdateform.get('creation_time')?.value
     this.user2.content=this.userupdateform.get('content')?.value
     this.postService.updatePost(this.user2);
-    console.log("lefute")
   }
 
   updateUser(user: Post) {

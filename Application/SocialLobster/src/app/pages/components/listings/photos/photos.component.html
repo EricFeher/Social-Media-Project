@@ -24,7 +24,39 @@
         <td><span>{{user.user_id}}</span></td>
         <td><span>{{user.photo}}</span></td>
         <td><button mat-button (click)="onDelete(user.id)">Delete</button></td>
+        <td><button (click)="updateUser(user)" class='btn btn-info'
+          data-toggle="modal" data-target="#myModal">Update</button>  </td>
       </tr>
       </tbody>
     </table>
+  </div>
+  <div class="modal" id="myModal">
+    
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form [formGroup]="userupdateform" #updusr (ngSubmit)="changeisUpdate()">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title" style="text-align: center">Update Comment</h4>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body" >
+              <input type="hidden" class="form-control"  formControlName="id" [(ngModel)]="user2.id">
+              <div class="form-group">
+                
+                <input type="hidden" class="form-control"  formControlName="user_id" [(ngModel)]="user2.user_id"  >
+              </div>
+              <div class="form-group">
+                
+                <input type="text" class="form-control" formControlName="photo" [(ngModel)]="user2.photo">
+              </div>  
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer" >
+            <button type="submit" class="btn btn-success">Update</button>
+          </div>
+  
+        </form>
+      </div>
+    </div>
   </div>
