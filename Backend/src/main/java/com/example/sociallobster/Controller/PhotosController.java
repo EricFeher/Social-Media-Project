@@ -51,7 +51,7 @@ public class PhotosController {
         }
         return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
     }
-
+    @PostMapping("/update/{id}")
     public String updatePhotos(@RequestBody Photos photos){
         Optional<Photos> temp = photosRepository.findById(photos.getId());
         Photos photos1 = temp.get();

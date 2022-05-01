@@ -49,7 +49,7 @@ public class WorkplaceController {
         }
         return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
     }
-
+    @PostMapping("/update/{id}")
     public String updateWorkplace(@RequestBody Workplace workplace){
         Optional<Workplace> temp = workplaceRepository.findById(workplace.getId());
         Workplace workplace1 = temp.get();

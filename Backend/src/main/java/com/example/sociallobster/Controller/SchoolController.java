@@ -51,7 +51,7 @@ public class SchoolController {
         }
         return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
     }
-
+    @PostMapping("/update/{id}")
     public String updateSchool(@RequestBody School school){
         Optional<School> temp = schoolRepository.findById(school.getId());
         School school1 = temp.get();

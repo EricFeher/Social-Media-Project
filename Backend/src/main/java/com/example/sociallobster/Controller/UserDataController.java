@@ -76,7 +76,7 @@ public class UserDataController {
         }
         return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
     }
-
+    @PostMapping("/update/{id}")
     public String updateUserData(@RequestBody UserData userData){
         Optional<UserData> temp = userDataRepository.findById(userData.getId());
         UserData userData1 = temp.get();

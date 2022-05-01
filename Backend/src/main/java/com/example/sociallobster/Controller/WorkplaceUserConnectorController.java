@@ -48,7 +48,7 @@ public class WorkplaceUserConnectorController {
         }
         return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
     }
-
+    @PostMapping("/update/{id}")
     public String updateWorkplaceUserConnector(@RequestBody WorkplaceUserConnector workplaceUserConnector){
         Optional<WorkplaceUserConnector> temp = workplaceUserConnectorRepository.findById(workplaceUserConnector.getId());
         WorkplaceUserConnector workplaceUserConnector1 = temp.get();

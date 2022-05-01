@@ -76,7 +76,7 @@ public class GroupsController {
         }
         return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
     }
-
+    @PostMapping("/update/{id}")
     public String updateGroups(@RequestBody Groups groups){
         Optional<Groups> temp = groupsRepository.findById(groups.getId());
         Groups groups1 = temp.get();

@@ -51,7 +51,7 @@ public class CommentsController {
         }
         return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
     }
-
+    @PostMapping("/update/{id}")
     public String updateComments(@RequestBody Comments comments){
         Optional<Comments> temp = commentsRepository.findById(comments.getId());
         Comments comments1 = temp.get();

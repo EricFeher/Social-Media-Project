@@ -51,7 +51,7 @@ public class LocationController {
         }
         return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
     }
-
+    @PostMapping("/update/{id}")
     public String updateLocation(@RequestBody Location location){
         Optional<Location> temp = locationRepository.findById(location.getId());
         Location location1 = temp.get();

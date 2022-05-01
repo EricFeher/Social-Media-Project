@@ -78,7 +78,7 @@ public class FollowsController {
         }
         return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
     }
-
+    @PostMapping("/update/{id}")
     public String updateFollows(@RequestBody Follows follows){
         Optional<Follows> temp = followsRepository.findById(follows.getId());
         Follows follows1 = temp.get();

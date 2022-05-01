@@ -52,7 +52,7 @@ public class PostController {
         }
         return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
     }
-
+    @PostMapping("/update/{id}")
     public String updatePost(@RequestBody Post post){
         Optional<Post> temp = postRepository.findById(post.getId());
         Post post1 = temp.get();

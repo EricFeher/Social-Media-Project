@@ -48,7 +48,7 @@ public class SchoolUserConnectorController {
         }
         return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
     }
-
+    @PostMapping("/update/{id}")
     public String updateSchoolUserConncetor(@RequestBody SchoolUserConnector schoolUserConnector){
         Optional<SchoolUserConnector> temp = schoolUserConnectorRepository.findById(schoolUserConnector.getId());
         SchoolUserConnector schoolUserConnector1 = temp.get();

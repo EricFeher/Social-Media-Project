@@ -50,7 +50,7 @@ public class CommentsLikesController {
         }
         return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
     }
-
+    @PostMapping("/update/{id}")
     public String updateCommentsLikes(@RequestBody CommentsLikes commentsLikes){
         Optional<CommentsLikes> temp = commentsLikesRepository.findById(commentsLikes.getId());
         CommentsLikes commentsLikes1 = temp.get();

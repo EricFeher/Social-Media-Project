@@ -50,7 +50,7 @@ public class MessageController {
         }
         return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
     }
-
+    @PostMapping("/update/{id}")
     public String updateMessage(@RequestBody Message message){
         Optional<Message> temp = messageRepository.findById(message.getId());
         Message message1 = temp.get();
