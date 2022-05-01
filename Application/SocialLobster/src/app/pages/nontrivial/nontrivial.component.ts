@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from 'src/app/shared/models/location.model';
+import { User } from 'src/app/shared/models/user.model';
 import { UserData } from 'src/app/shared/models/userdata.model';
 import { NontrivialService } from 'src/app/shared/services/nontrivial.service';
 
@@ -11,11 +12,13 @@ import { NontrivialService } from 'src/app/shared/services/nontrivial.service';
 export class NontrivialComponent implements OnInit {
   schoolLocation: Location[]
   users: UserData[]
+  user: User[]
   constructor(private nonTrivialService: NontrivialService) { }
 
   ngOnInit(): void {
     this.getSchoolLocation();
     this.getUser3Follower();
+    this.getUserWhoWritePost();
     
   }
 
@@ -32,6 +35,15 @@ export class NontrivialComponent implements OnInit {
       console.log(data);
       
       this.users=data;
+    }, error => {
+      console.log("Error");
+    })
+  }
+
+  getUserWhoWritePost() {
+    this.nonTrivialService.getUserWhoWritePost().subscribe(data => {
+      console.log(data);
+      this.user = data;
     }, error => {
       console.log("Error");
     })

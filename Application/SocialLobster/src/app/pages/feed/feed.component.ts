@@ -15,7 +15,7 @@ export class FeedComponent implements OnInit {
   users: Array<User> = []
   posts: Post[]
   comments: Array<any[]> = []
-  user: Array<User> = []
+  user: Array<any[]> = []
   size: any
   
   constructor(private userService: UserService, private postService: PostService, private commentService: CommentsService) { }
@@ -58,11 +58,16 @@ export class FeedComponent implements OnInit {
   }
 
   /*getCommentsUser() {
-    this.commentService.selectUserForComments(id).subscribe(data => {
-      this.user = data;
-    }, error => {
-      console.log("Error");
-    })
+    for (let i = 0; i < this.comments.length; i++){
+      this.commentService.selectUserForComments(this.comments[i][0]).subscribe(data => {
+        this.user.push(data);
+        console.log(data);
+        
+      }, error => {
+        console.log("Error");
+      })
+    }
+    
   }*/
 
 }

@@ -42,6 +42,17 @@ public class UserController {
         return new ResponseEntity<List<User>>(list, HttpStatus.OK);
     }
 
+    @GetMapping("/getUsersWhoWriteComment")
+    public ResponseEntity<List<User>> getUsersWhoWriteComment() {
+        List<User> list = null;
+        try {
+            list = userInsertRepository.getUsersWhoWriteComment();
+            return new ResponseEntity<List<User>>(list, HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity<List<User>>(list, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @GetMapping("/select/{id}")
     public ResponseEntity<User> selectUserById(@PathVariable("id") Integer id) {
         User user = new User();

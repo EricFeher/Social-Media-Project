@@ -37,8 +37,8 @@ public selectComments(id: number){
   return this.http.get<any[]>(`${this.baseUrl}/getCommentsFromPost/${id}`)
 }
 
-public selectUserForComments(id: number){
-  return this.http.get<User[]>(`${this.baseUrl}/getUserForComment/${id}`)
+public selectUserForComments(content: string){
+  return this.http.get<any[]>(`${this.baseUrl}/getUserForComment/${content}`)
 }
 
 }

@@ -8,5 +8,10 @@
 <div *ngFor="let user of users" >  
     <p>{{user.first_name}}  {{user.last_name}}</p>
 </div>
+<br>
+<p style="font-weight: bold;">Users who write comment:</p>
+<div *ngFor="let userWhoWriteComment of user" >  
+    <p>{{userWhoWriteComment.username}}</p>
+</div>
 
 
