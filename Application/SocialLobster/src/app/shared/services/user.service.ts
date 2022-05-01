@@ -8,6 +8,7 @@ import { User } from '../models/user.model';
 })
 export class UserService {
   private baseUrl = 'http://localhost:8081/api/user';
+  private followUrl = 'http://localhost:8081/api/follows';
 
   constructor(private http: HttpClient) { }
 
@@ -28,6 +29,14 @@ export class UserService {
 
   public updateStudent(user: User):void{
       this.http.post<any>(`${this.baseUrl}/update/${user.id}`, user).subscribe();
+  }
+
+  public getFollows(id: number){
+    return this.http.get<any[]>(`${this.followUrl}/getFollowsByUserId1/${id}`)
+  }
+
+  public getFollowers(id: number){
+    return this.http.get<any[]>(`${this.followUrl}/getFollowsByUserId2/${id}`)
   }
 
 }

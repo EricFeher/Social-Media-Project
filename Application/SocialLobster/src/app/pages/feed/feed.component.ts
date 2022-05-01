@@ -14,7 +14,7 @@ import { UserService } from '../../shared/services/user.service';
 export class FeedComponent implements OnInit {
   users: Array<User> = []
   posts: Post[]
-  array: []
+  comments: Array<any[]> = []
   user: Array<User> = []
   size: any
   
@@ -30,6 +30,7 @@ export class FeedComponent implements OnInit {
     items.unsubscribe();
       this.posts = data;
       this.getUsersById();
+      this.getComments();
     }, error => {
       console.log("Error to get posts!");
     });
@@ -46,15 +47,17 @@ export class FeedComponent implements OnInit {
     }
   }
 
-  /*getComments(id: number) {
-    this.commentService.selectComments(id).subscribe(data => {
-      this.array = data;
-    }, error =>{
-      console.log("Error");
-    })
+  getComments() {
+    for (let i = 0; i < this.posts.length; i++){
+      this.commentService.selectComments(this.posts[i].id).subscribe(data => {
+        this.comments.push(data)
+      }, error =>{
+        console.log("Error");
+      })
+    } 
   }
 
-  getCommentsUser(id: number) {
+  /*getCommentsUser() {
     this.commentService.selectUserForComments(id).subscribe(data => {
       this.user = data;
     }, error => {

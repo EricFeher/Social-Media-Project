@@ -34,11 +34,11 @@ public updateComment(comment: Comments){
 }
 
 public selectComments(id: number){
-  this.http.get<any>(`${this.baseUrl}/getCommentsFromPost/${id}`)
+  return this.http.get<any>(`${this.baseUrl}/getCommentsFromPost/${id}`)
 }
 
 public selectUserForComments(id: number){
-  this.http.get<User[]>(`${this.baseUrl}/getUserForComment/${id}`)
+  return this.http.get<User[]>(`${this.baseUrl}/getUserForComment/${id}`)
 }
 
 }

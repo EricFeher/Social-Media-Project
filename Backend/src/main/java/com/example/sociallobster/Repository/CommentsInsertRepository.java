@@ -24,7 +24,7 @@ public class CommentsInsertRepository {
     }
 
     public List getCommentsFromPost(int id) {
-        return entityManager.createNativeQuery("SELECT COMMENTS.ID,COMMENTS.CONTENT FROM COMMENTS INNER JOIN POST ON post.id=comments.post_id WHERE POST.ID=?")
+        return entityManager.createNativeQuery("SELECT COMMENTS.CONTENT FROM COMMENTS INNER JOIN POST ON post.id=comments.post_id WHERE POST.ID=?")
                 .setParameter(1, id)
                 .getResultList();
     }

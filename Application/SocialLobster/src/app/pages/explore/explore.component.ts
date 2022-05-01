@@ -12,6 +12,10 @@ import { UserService } from '../../shared/services/user.service';
 export class ExploreComponent implements OnInit {
   groups: Groups[]
   users: User[]
+  follows: Array<any[]> = []
+  followers: Array<any[]> = []
+  groupMembers: Array<any[]> = []
+  groupAdmin: Array<User[]> = []
   constructor(private groupService: GroupsService, private userService: UserService) { }
 
   ngOnInit(): void {
@@ -25,6 +29,8 @@ export class ExploreComponent implements OnInit {
       data => {
         console.log(data);
         this.groups = data;
+        this.getGroupMembers();
+        this.getGroupAdmin();
       }
     );
   }
@@ -35,8 +41,54 @@ export class ExploreComponent implements OnInit {
       data => {
         console.log(data);
         this.users = data;
+        this.getFollows();
+        this.getFollowers();
       }
     );
+  }
+
+  getFollows() {
+    for (let i = 0; i < this.users.length; i++){
+     const items= this.userService.getFollows(this.users[i].id).subscribe(data => {
+        this.follows.push(data);
+        items.unsubscribe();
+      }, error => {
+        console.log("error");
+      })
+    }
+  }
+
+  getFollowers() {
+    for (let i = 0; i < this.users.length; i++){
+     const items= this.userService.getFollowers(this.users[i].id).subscribe(data => {
+        this.followers.push(data);
+        items.unsubscribe();
+      }, error => {
+        console.log("error");
+      })
+    }
+  }
+
+  getGroupMembers() {
+    for(let i = 0; i < this.groups.length; i++){
+      const items= this.groupService.getGroupMembers(this.groups[i].id).subscribe(data => {
+        this.groupMembers.push(data);
+        items.unsubscribe();
+      }, error => {
+        console.log(error);
+      })
+    }
+  }
+
+  getGroupAdmin() {
+    for(let i = 0; i < this.groups.length; i++){
+      const items= this.groupService.getGroupAdmin(this.groups[i].id).subscribe(data => {
+        this.groupAdmin.push(data);
+        items.unsubscribe();
+      }, error => {
+        console.log(error);
+      })
+    }
   }
 
 
