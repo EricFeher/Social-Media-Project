@@ -2,6 +2,7 @@ package com.example.sociallobster.Controller;
 
 
 import com.example.sociallobster.Model.Comments;
+import com.example.sociallobster.Model.User;
 import com.example.sociallobster.Repository.CommentsInsertRepository;
 import com.example.sociallobster.Repository.CommentsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,6 +43,29 @@ public class CommentsController {
         }
         return new ResponseEntity<List<Comments>>(list, HttpStatus.OK);
     }
+
+    @GetMapping("/getCommentsFromPost/{id}")
+    public ResponseEntity<List> getCommentsFromPost(@PathVariable("id") Integer id) {
+        List list = new ArrayList();
+        try {
+            list = commentsInsertRepository.getCommentsFromPost(id);
+            return new ResponseEntity<List>(list, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<List>(list, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/getUserForComment/{id}")
+    public ResponseEntity<List> getUserForComment(@PathVariable("id") Integer id) {
+        List list = new ArrayList();
+        try {
+            list = commentsInsertRepository.getUserForComment(id);
+            return new ResponseEntity<List>(list, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<List>(list, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteComments(@PathVariable("id") Integer id){
         try{

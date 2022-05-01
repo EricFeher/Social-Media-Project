@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Repository
 public class CommentsInsertRepository {
@@ -21,4 +22,17 @@ public class CommentsInsertRepository {
                 .setParameter(3, comments.getContent())
                 .executeUpdate();
     }
+
+    public List getCommentsFromPost(int id) {
+        return entityManager.createNativeQuery("SELECT COMMENTS.ID,COMMENTS.CONTENT FROM COMMENTS INNER JOIN POST ON post.id=comments.post_id WHERE POST.ID=?")
+                .setParameter(1, id)
+                .getResultList();
+    }
+
+    public List getUserForComment(int id ) {
+        return entityManager.createNativeQuery("SELECT * FROM ENDUSER INNER JOIN COMMENTS ON comments.user_id=ENDUSER.id WHERE comments.user_id=?")
+                .setParameter(1, id)
+                .getResultList();
+    }
+
 }

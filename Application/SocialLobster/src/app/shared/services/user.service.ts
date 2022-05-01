@@ -29,4 +29,5 @@ export class UserService {
   public updateStudent(user: User):void{
       this.http.post<any>(`${this.baseUrl}/update/${user.id}`, user).subscribe();
   }
+
 }
