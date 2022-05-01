@@ -32,6 +32,8 @@
         <td><span>{{user.content}}</span></td>
         <td><span>{{user.creation_time}}</span></td>
         <td><button mat-button (click)="onDelete(user.id)">Delete</button></td>
+        <td><button (click)="updateUser(user)" class='btn btn-info'
+                    data-toggle="modal" data-target="#myModal">Update</button>  </td>
       </tr>
       </tbody>
     </table>
@@ -63,13 +65,13 @@
                 <label>Password</label>
                 <input type="hidden" class="form-control" formControlName="password" [(ngModel)]="user2.creation_time">
               </div>
-  
+
           </div>
           <!-- Modal footer -->
           <div class="modal-footer" >
             <button type="submit" class="btn btn-success">Update</button>
           </div>
-  
+
         </form>
       </div>
     </div>

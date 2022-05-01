@@ -63,7 +63,7 @@ export class CommentsComponent implements OnInit {
     console.log("lefute")
   }
 
-  updateUser(user: User) {
+  updateUser(user: Comments) {
     this.user2=user;
   }
 
