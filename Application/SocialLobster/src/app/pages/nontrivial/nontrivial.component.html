@@ -1,3 +1,12 @@
 <app-navbar2></app-navbar2>
-<div><p>A 3 ID felhasználó Follower száma: </p></div>
-<div><p>A 3 ID felhasználó Followed száma: </p></div>
+<div *ngFor="let locations of schoolLocation">
+    <p style="font-weight: bold;">Bayer Inc iskola címe:  </p>
+    <p>{{locations.postcode}}, {{locations.city}} , {{locations.street}}, {{locations.housenumber}} </p>
+</div>
+<br>
+<p style="font-weight: bold;">Users who have more then 3 follower:</p>
+<div *ngFor="let user of users" >  
+    <p>{{user.first_name}}  {{user.last_name}}</p>
+</div>
+
+

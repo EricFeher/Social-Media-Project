@@ -57,7 +57,7 @@ public class GroupsController {
 
     @GetMapping("/getGroupAdminUser/{id}")
     public ResponseEntity<List<User>> getGroupAdminUser(@PathVariable("id") Integer id) {
-        List<User> admin = new ArrayList<>();
+        List<User> admin = null;
         try {
             admin = groupsInsertRepository.getGroupAdminUser(id);
             return new ResponseEntity<List<User>>(admin, HttpStatus.OK);

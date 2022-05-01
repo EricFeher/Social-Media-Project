@@ -84,6 +84,7 @@ export class ExploreComponent implements OnInit {
     for(let i = 0; i < this.groups.length; i++){
       const items= this.groupService.getGroupAdmin(this.groups[i].id).subscribe(data => {
         this.groupAdmin.push(data);
+        console.log(this.groupAdmin[2][0].username);
         items.unsubscribe();
       }, error => {
         console.log(error);

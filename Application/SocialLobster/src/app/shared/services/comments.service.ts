@@ -34,7 +34,7 @@ public updateComment(comment: Comments){
 }
 
 public selectComments(id: number){
-  return this.http.get<any>(`${this.baseUrl}/getCommentsFromPost/${id}`)
+  return this.http.get<any[]>(`${this.baseUrl}/getCommentsFromPost/${id}`)
 }
 
 public selectUserForComments(id: number){

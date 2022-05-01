@@ -18,6 +18,9 @@
         <button mat-button routerLink="/admin" routerLinkActive="active" *ngIf="loggedInUser && admin">Admin</button>
     </div>
     <div>
+        <button mat-button routerLink="/nontrivial" routerLinkActive="active" *ngIf="loggedInUser">Nontrivial Querries</button>
+    </div>
+    <div>
         <button mat-button routerLink="/explore" routerLinkActive="active" *ngIf="loggedInUser">Explore</button>
     </div>
     <div>

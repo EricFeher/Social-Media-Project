@@ -4,7 +4,7 @@
         <mat-list *ngFor="let group of groups; index as i">
             <mat-list-item>Name: {{group.name}}</mat-list-item>
             <mat-list-item>Group members: {{groupMembers[i]}}</mat-list-item>
-            <mat-list-item>Group admin: {{groupAdmin[i]}}</mat-list-item>
+            <mat-list-item>Group admin: {{groupAdmin[i][0].username}}</mat-list-item>
             <mat-divider></mat-divider>
           </mat-list>
     </mat-tab>

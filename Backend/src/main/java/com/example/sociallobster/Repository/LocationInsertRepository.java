@@ -24,8 +24,8 @@ public class LocationInsertRepository {
                 .executeUpdate();
     }
 
-    public List getLocationForSchool(){
-        return entityManager.createNativeQuery(" SELECT * FROM LOCATION WHERE LOCATION.ID IN (SELECT LOCATION_ID FROM SCHOOL WHERE NAME='Bayer Inc')")
+    public List<Location> getLocationForSchool(){
+        return entityManager.createNativeQuery(" SELECT * FROM LOCATION WHERE LOCATION.ID IN (SELECT LOCATION_ID FROM SCHOOL WHERE NAME='Bayer Inc')",Location.class)
                 .getResultList();
     }
 
